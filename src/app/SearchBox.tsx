@@ -13,12 +13,14 @@ export default function SearchBox() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     if (!query.trim()) return;
     
     setLoading(true);
+    setOpen(true);
     try {
       const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
       const data = await res.json();
@@ -32,33 +34,48 @@ export default function SearchBox() {
   return (
     <div className="mb-8">
       <form onSubmit={handleSearch} className="flex gap-2">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Поиск по статьям..."
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        />
+        <div className="relative flex-1">
+          <svg xmlns="http://www.w3.org/2000/svg" className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Поиск по статьям..."
+            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white"
+          />
+        </div>
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 disabled:opacity-50"
+          className="px-6 py-3 bg-emerald-700 text-white rounded-xl hover:bg-emerald-800 disabled:opacity-50 font-medium transition-colors"
         >
           {loading ? '...' : 'Поиск'}
         </button>
       </form>
 
-      {results.length > 0 && (
-        <div className="mt-4 grid gap-2">
+      {open && results.length > 0 && (
+        <div className="mt-3 bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+          <div className="p-3 border-b border-gray-100 text-sm text-gray-500">
+            Найдено: {results.length}
+          </div>
           {results.map((r) => (
             <Link
               key={r.id}
               href={`/articles/${r.id}`}
-              className="block p-3 rounded border border-gray-200 hover:border-emerald-400"
+              className="block p-4 border-b border-gray-50 last:border-0 hover:bg-emerald-50 transition-colors"
+              onClick={() => setOpen(false)}
             >
               <div className="font-medium text-emerald-800">{r.title}</div>
             </Link>
           ))}
+        </div>
+      )}
+
+      {open && !loading && results.length === 0 && query && (
+        <div className="mt-3 p-4 bg-gray-50 rounded-xl text-sm text-gray-500">
+          Ничего не найдено по запросу «{query}»
         </div>
       )}
     </div>
