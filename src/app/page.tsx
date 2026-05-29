@@ -1,5 +1,4 @@
-import fs from 'fs';
-import path from 'path';
+import articlesData from '../../data/index.json';
 import Link from 'next/link';
 import SearchBox from './SearchBox';
 
@@ -11,8 +10,7 @@ interface ArticleIndex {
 }
 
 export default function HomePage() {
-  const indexPath = path.join(process.cwd(), 'data', 'index.json');
-  const articles: ArticleIndex[] = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
+  const articles: ArticleIndex[] = articlesData;
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-8">
