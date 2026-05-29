@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import SearchBox from './SearchBox';
 
 interface ArticleIndex {
   id: string;
@@ -16,7 +17,9 @@ export default function HomePage() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-2 text-gray-900">Статьи</h1>
-      <p className="text-gray-600 mb-8">Справочная информация для ветеринарных врачей</p>
+      <p className="text-gray-600 mb-6">Справочная информация для ветеринарных врачей</p>
+
+      <SearchBox />
 
       <div className="grid gap-4">
         {articles.map((article) => (
