@@ -1,18 +1,18 @@
 {
   "top": [
     { "name": "Главная", "href": "/" },
-    { "name": "О проекте", "href": "/content/view/41/61/" },
-    { "name": "Ветеринарные клиники и врачи", "href": "/content/view/64/76/" },
-    { "name": "Блоги", "href": "/component/option,com_myblog/Itemid,85/" },
-    { "name": "Связаться с администратором", "href": "/component/option,com_contact/task,view/contact_id,1/Itemid,45/" },
-    { "name": "Консультация юриста", "href": "/component/option,com_contact/task,view/contact_id,2/Itemid,45/" },
-    { "name": "Поиск по сайту", "href": "/component/option,com_search/Itemid,5/" }
+    { "name": "О проекте", "href": "/about/" },
+    { "name": "Ветеринарные клиники и врачи", "href": "/clinics/" },
+    { "name": "Блоги", "href": "/blogs/" },
+    { "name": "Связаться с администратором", "href": "/contact/" },
+    { "name": "Консультация юриста", "href": "/contact/" },
+    { "name": "Поиск по сайту", "href": "/search/" }
   ],
   "left": [
     { "name": "Главная", "href": "/" },
-    { "name": "Работа для ветврачей", "href": "/component/option,com_neorecruit/Itemid,55/" },
-    { "name": "Новости ветеринарии", "href": "/content/category/1/14/57/" },
-    { "name": "Образование", "href": "/content/category/6/30/75/" },
+    { "name": "Работа для ветврачей", "href": "/jobs/" },
+    { "name": "Новости ветеринарии", "href": "/category/news/" },
+    { "name": "Образование", "href": "/category/education/" },
     { "name": "Ссылки. Обмен ссылками", "href": "/partners/" }
   ],
   "materials": [

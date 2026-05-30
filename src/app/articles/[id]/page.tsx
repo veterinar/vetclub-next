@@ -43,7 +43,7 @@ export default async function ArticlePage({ params }: Props) {
     return (
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
         <nav className="text-sm text-gray-500 mb-4">
-          <a href="/" className="hover:text-#2e7d32 flex items-center gap-1 transition-colors">
+          <a href="/" className="hover:text-[#2e7d32] flex items-center gap-1 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -57,7 +57,7 @@ export default async function ArticlePage({ params }: Props) {
           </h1>
           
           <div 
-            className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-#2e7d32 prose-img:rounded-lg"
+            className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-[#2e7d32] prose-img:rounded-lg"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
         </article>

@@ -43,7 +43,7 @@ export default async function ArticlePage({ params }: Props) {
     return (
       <div className="bg-white rounded-xl border border-gray-200 p-6">
         <nav className="text-sm text-gray-500 mb-4">
-          <Link href="/" className="hover:text-#2e7d32 flex items-center gap-1">
+          <Link href="/" className="hover:text-[#2e7d32] flex items-center gap-1">
             ← Главная
           </Link>
         </nav>
