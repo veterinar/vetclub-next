@@ -45,7 +45,7 @@ export default async function CategoryPage({ params }: Props) {
             >
               <Link
                 href={`/content/view/${article.id}/${category.id.split('/').pop()}/`}
-                className="text-sm text-[#1a5da0] hover:underline block"
+                className="text-sm text-[#1b5e20] hover:underline block"
               >
                 {article.title}
               </Link>
