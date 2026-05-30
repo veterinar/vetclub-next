@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import menuData from "@/data/menu.json";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Клуб ветеринарных врачей VetClub.ru",
-  description: "Социальная сеть для ветеринарных врачей. Справочная информация, обмен опытом, форум, вакансии, блоги.",
+  title: "VetClub.ru - Ветеринария для профессионалов",
+  description: "Первая в России социальная сеть ветеринарных врачей",
 };
 
 export default function RootLayout({
@@ -26,123 +26,163 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 text-gray-900 min-h-screen`}
-      >
-        <div className="max-w-6xl mx-auto bg-white min-h-screen shadow-sm">
-          {/* Header / Logo */}
-          <div className="bg-gray-50 border-b border-gray-200">
-            <div className="p-4">
-              <Link href="/" className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
+        <div className="wrapper" style={{ maxWidth: 950, margin: '0 auto' }}>
+          {/* Top Header */}
+          <div id="top-head" style={{ border: '0 6px solid #bec1c7', background: '#f9fbff', height: 92 }}>
+            <div className="relative">
+              <span id="logo" style={{ position: 'absolute', top: 16, left: 21, width: 317, height: 68 }}>
+                <Link href="/" className="text-2xl font-bold" style={{ color: '#1a5da0' }}>
+                  VetClub.ru
+                </Link>
+                <span className="block text-sm" style={{ color: '#666' }}>Ветеринария для профессионалов</span>
+              </span>
+              <div id="top-mod" style={{ margin: '10px 5px 10px 470px', height: 47, overflow: 'hidden' }}>
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="text-gray-500">Статьи</span>
+                  <span className="text-gray-400">|</span>
+                  <span className="text-gray-500">Форум</span>
+                  <span className="text-gray-400">|</span>
+                  <span className="text-gray-500">Вакансии</span>
                 </div>
-                <div>
-                  <h1 className="text-xl font-bold text-emerald-800">VetClub.ru</h1>
-                  <p className="text-xs text-gray-500">Клуб ветеринарных врачей</p>
-                </div>
-              </Link>
+              </div>
             </div>
           </div>
 
-          {/* Top Navigation */}
-          <nav className="bg-emerald-700 text-white">
-            <div className="flex flex-wrap">
-              {menuData.top.map((item, i) => (
+          {/* Horizontal Menu */}
+          <div id="horiz-menu" style={{ border: '6px 6px 0 6px solid #bec1c7', background: '#488dd3', height: 22 }}>
+            <nav className="flex items-center px-2 h-full">
+              {menuData.top.map((item) => (
                 <Link
-                  key={i}
+                  key={item.href}
                   href={item.href}
-                  className="px-4 py-2 text-sm hover:bg-emerald-800 transition-colors border-r border-emerald-600"
+                  className="text-white text-xs px-3 py-1 hover:bg-[#3f7cb9]"
+                  style={{ borderRight: '1px solid #3f7cb9' }}
                 >
                   {item.name}
                 </Link>
               ))}
-            </div>
-          </nav>
+            </nav>
+          </div>
 
           {/* Main Content Area */}
-          <div className="flex">
-            {/* Sidebar */}
-            <aside className="w-64 bg-gray-50 border-r border-gray-200 flex-shrink-0">
-              <div className="p-3">
-                {/* Menu Module */}
-                <div className="mb-4">
-                  <h3 className="bg-gray-200 text-gray-700 text-sm font-bold px-2 py-1 rounded mb-1">Меню</h3>
-                  <div className="space-y-0">
-                    {menuData.left.map((item, i) => (
-                      <Link
-                        key={i}
-                        href={item.href}
-                        className="block px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 hover:text-emerald-700 transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+          <div id="outer-border" style={{ border: '0 6px 6px 6px solid #e0e0e0' }}>
+            <table className="outer w-full" cellPadding={0} cellSpacing={0}>
+              <tbody>
+                <tr className="align-top">
+                  {/* Left Sidebar */}
+                  <td className="left" style={{ width: '22%', border: '6px 6px 0 6px solid #cdd1d7', background: '#f9fbff', padding: 6 }}>
+                    <div className="sidepad">
+                      <div className="sidebar-box">
+                        <div className="module-heading">Меню</div>
+                        {menuData.left.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="nav-link text-xs"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
 
-                {/* Materials Module */}
-                <div className="mb-4">
-                  <h3 className="bg-gray-200 text-gray-700 text-sm font-bold px-2 py-1 rounded mb-1">Материалы для врачей</h3>
-                  <div className="space-y-0">
-                    {menuData.materials.map((item, i) => (
-                      <Link
-                        key={i}
-                        href={item.href}
-                        className="block px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 hover:text-emerald-700 transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+                      <div className="sidebar-box">
+                        <div className="module-heading">Материалы</div>
+                        {menuData.materials.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="nav-link text-xs"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
 
-                {/* Reference Module */}
-                <div className="mb-4">
-                  <h3 className="bg-gray-200 text-gray-700 text-sm font-bold px-2 py-1 rounded mb-1">Справочная информация</h3>
-                  <div className="space-y-0">
-                    {menuData.reference.map((item, i) => (
-                      <Link
-                        key={i}
-                        href={item.href}
-                        className="block px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 hover:text-emerald-700 transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+                      <div className="sidebar-box">
+                        <div className="module-heading">Справочная информация</div>
+                        {menuData.reference.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="nav-link text-xs"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
 
-                {/* Guides Module */}
-                <div className="mb-4">
-                  <h3 className="bg-gray-200 text-gray-700 text-sm font-bold px-2 py-1 rounded mb-1">Справочники</h3>
-                  <div className="space-y-0">
-                    {menuData.guides.map((item, i) => (
-                      <Link
-                        key={i}
-                        href={item.href}
-                        className="block px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 hover:text-emerald-700 transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </aside>
+                      <div className="sidebar-box">
+                        <div className="module-heading">Справочники</div>
+                        {menuData.guides.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="nav-link text-xs"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </td>
 
-            {/* Content */}
-            <main className="flex-1 p-4">
-              {children}
-            </main>
+                  {/* Middle Content */}
+                  <td className="middle" style={{ border: '6px 6px 0 6px solid #e0e0e0', background: '#fff', padding: '6px 10px' }}>
+                    <div className="padding">
+                      <div className="pathway">
+                        <span className="pathway text-xs">
+                          <Link href="/" className="hover:underline">Главная</Link>
+                        </span>
+                      </div>
+                      {children}
+                    </div>
+                  </td>
+
+                  {/* Right Sidebar */}
+                  <td className="right" style={{ width: '22%', border: '6px 6px 0 6px solid #cdd1d7', background: '#f9fbff', padding: 6 }}>
+                    <div className="sidepad">
+                      <div className="sidebar-box">
+                        <div className="module-heading">Поиск</div>
+                        <form className="flex flex-col gap-2">
+                          <input
+                            type="text"
+                            placeholder="Поиск..."
+                            className="w-full px-2 py-1 text-xs border border-gray-300"
+                          />
+                          <button type="submit" className="text-xs bg-[#488dd3] text-white px-2 py-1">
+                            Искать
+                          </button>
+                        </form>
+                      </div>
+
+                      <div className="sidebar-box">
+                        <div className="module-heading">Рекомендуем</div>
+                        <div className="text-xs space-y-2">
+                          <Link href="/content/view/58/63/" className="block hover:underline">
+                            Диагностика мочекаменной болезни
+                          </Link>
+                          <Link href="/content/view/385/73/" className="block hover:underline">
+                            Гериатрия в ветеринарии
+                          </Link>
+                          <Link href="/content/view/387/57/" className="block hover:underline">
+                            Национальная конференция 2013
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           {/* Footer */}
-          <footer className="bg-gray-100 border-t border-gray-200 p-4 text-center text-sm text-gray-500">
-            <p>© 2008–2026 VetClub.ru — Клуб ветеринарных врачей</p>
-          </footer>
+          <div id="bot-footer" style={{ border: '6px 6px 0 6px solid #cdd1d7', background: '#babfc7', height: 38, textAlign: 'center', lineHeight: '38px', color: '#74777c' }}>
+            <span className="text-xs">
+              © 2008-2014 VetClub.ru - Ветеринария для профессионалов
+            </span>
+          </div>
         </div>
       </body>
     </html>

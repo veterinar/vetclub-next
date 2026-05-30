@@ -53,20 +53,55 @@ export default function HomePage() {
       </div>
 
       {/* Latest Articles */}
-      <div>
-        <h2 className="text-lg font-bold text-gray-900 mb-3">Последние публикации</h2>
-        <div className="space-y-4">
+      <div className="bg-white border border-gray-200 rounded p-4">
+        <h2 className="text-lg font-bold text-gray-900 mb-3 border-b border-gray-100 pb-2">Последние публикации</h2>
+        <div className="space-y-3">
           {latestArticles.map((article) => (
-            <article key={article.id} className="bg-white border border-gray-200 rounded p-4">
-              <h3 className="font-semibold text-emerald-800 mb-2">
+            <article key={article.id} className="border-b border-gray-100 pb-3 last:border-0">
+              <h3 className="font-semibold text-sm text-emerald-800 mb-1">
                 <Link href={`/content/view/${article.id}/1/`} className="hover:underline">
                   {article.title}
                 </Link>
               </h3>
               {article.description && (
-                <p className="text-sm text-gray-600 line-clamp-3">{article.description}</p>
+                <p className="text-xs text-gray-500 line-clamp-2">{article.description}</p>
               )}
             </article>
+          ))}
+        </div>
+      </div>
+
+      {/* Most Read */}
+      <div className="bg-white border border-gray-200 rounded p-4">
+        <h2 className="text-lg font-bold text-gray-900 mb-3 border-b border-gray-100 pb-2">Популярные</h2>
+        <div className="space-y-2">
+          {mostRead.map((article) => (
+            <div key={article.id} className="flex items-start gap-2 text-sm">
+              <span className="text-emerald-600 font-bold mt-0.5">→</span>
+              <Link 
+                href={`/content/view/${article.id}/${article.catid}/`} 
+                className="text-emerald-800 hover:underline"
+              >
+                {article.title}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Archives */}
+      <div className="bg-white border border-gray-200 rounded p-4">
+        <h2 className="text-lg font-bold text-gray-900 mb-3 border-b border-gray-100 pb-2">Архив новостей</h2>
+        <div className="space-y-1">
+          {archives.map((archive) => (
+            <div key={`${archive.year}-${archive.month}`} className="text-sm">
+              <Link 
+                href={`/content/category/1/14/57/`} 
+                className="text-emerald-800 hover:underline"
+              >
+                {archive.name}
+              </Link>
+            </div>
           ))}
         </div>
       </div>
