@@ -35,15 +35,14 @@ const archives = [
 ];
 
 export default function HomePage() {
-  // Get latest 10 articles for frontpage
   const latestArticles = articlesData.slice(0, 10);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Registration Module */}
-      <div className="bg-emerald-50 border border-emerald-200 rounded p-4">
-        <h2 className="font-bold text-emerald-800 mb-2">О регистрации на сайте</h2>
-        <p className="text-sm text-gray-700 leading-relaxed">
+      <div className="content-box">
+        <div className="module-heading">О регистрации на сайте</div>
+        <p className="text-xs text-gray-700 leading-relaxed">
           Проект VetClub.ru — первая в России социальная сеть ветеринарных врачей, 
           сообщество профессионалов с закрытм членством. Членами клуба становятся практикующие 
           ветеринарные врачи, менеджеры ветеринарных клиник, и ветфельдшеры. 
@@ -53,12 +52,12 @@ export default function HomePage() {
       </div>
 
       {/* Latest Articles */}
-      <div className="bg-white border border-gray-200 rounded p-4">
-        <h2 className="text-lg font-bold text-gray-900 mb-3 border-b border-gray-100 pb-2">Последние публикации</h2>
-        <div className="space-y-3">
+      <div className="content-box">
+        <div className="module-heading">Последние публикации</div>
+        <div className="space-y-2">
           {latestArticles.map((article) => (
-            <article key={article.id} className="border-b border-gray-100 pb-3 last:border-0">
-              <h3 className="font-semibold text-sm text-emerald-800 mb-1">
+            <article key={article.id} className="border-b border-gray-100 pb-2 last:border-0">
+              <h3 className="font-semibold text-xs text-[#1a5da0] mb-1">
                 <Link href={`/content/view/${article.id}/1/`} className="hover:underline">
                   {article.title}
                 </Link>
@@ -72,15 +71,15 @@ export default function HomePage() {
       </div>
 
       {/* Most Read */}
-      <div className="bg-white border border-gray-200 rounded p-4">
-        <h2 className="text-lg font-bold text-gray-900 mb-3 border-b border-gray-100 pb-2">Популярные</h2>
-        <div className="space-y-2">
+      <div className="content-box">
+        <div className="module-heading">Популярные</div>
+        <div className="space-y-1">
           {mostRead.map((article) => (
-            <div key={article.id} className="flex items-start gap-2 text-sm">
-              <span className="text-emerald-600 font-bold mt-0.5">→</span>
+            <div key={article.id} className="flex items-start gap-1 text-xs">
+              <span className="text-[#488dd3] font-bold mt-0.5">→</span>
               <Link 
                 href={`/content/view/${article.id}/${article.catid}/`} 
-                className="text-emerald-800 hover:underline"
+                className="text-[#1a5da0] hover:underline"
               >
                 {article.title}
               </Link>
@@ -90,14 +89,14 @@ export default function HomePage() {
       </div>
 
       {/* Archives */}
-      <div className="bg-white border border-gray-200 rounded p-4">
-        <h2 className="text-lg font-bold text-gray-900 mb-3 border-b border-gray-100 pb-2">Архив новостей</h2>
+      <div className="content-box">
+        <div className="module-heading">Архив новостей</div>
         <div className="space-y-1">
           {archives.map((archive) => (
-            <div key={`${archive.year}-${archive.month}`} className="text-sm">
+            <div key={`${archive.year}-${archive.month}`} className="text-xs">
               <Link 
                 href={`/content/category/1/14/57/`} 
-                className="text-emerald-800 hover:underline"
+                className="text-[#1a5da0] hover:underline"
               >
                 {archive.name}
               </Link>

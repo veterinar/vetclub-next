@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import articlesData from '@/data/index.json';
+import Link from 'next/link';
 
 interface Article {
   id: string;
@@ -41,18 +42,28 @@ export default async function ArticlePage({ params }: Props) {
 
     return (
       <div>
-        <nav className="text-sm text-gray-500 mb-4">
-          <a href="/" className="hover:text-emerald-700 flex items-center gap-1">
-            ← Главная
-          </a>
-        </nav>
+        <div className="pathway mb-4">
+          <span className="pathway text-xs">
+            <Link href="/" className="hover:underline">Главная</Link>
+            <span className="px-1">→</span>
+            <span className="text-gray-500">{article.title}</span>
+          </span>
+        </div>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">{article.title}</h1>
+        <div className="content-box">
+          <div className="content-heading mb-4">{article.title}</div>
+          
+          {article.description && (
+            <div className="text-xs text-gray-500 mb-4 italic">
+              {article.description}
+            </div>
+          )}
 
-        <div
-          className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: article.content }}
-        />
+          <div
+            className="prose prose-sm max-w-none"
+            dangerouslySetInnerHTML={{ __html: article.content }}
+          />
+        </div>
       </div>
     );
   } catch {
