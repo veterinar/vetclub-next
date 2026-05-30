@@ -1,0 +1,43 @@
+{
+  "top": [
+    { "name": "Главная", "href": "/" },
+    { "name": "О проекте", "href": "/content/view/41/61/" },
+    { "name": "Ветеринарные клиники и врачи", "href": "/content/view/64/76/" },
+    { "name": "Блоги", "href": "/component/option,com_myblog/Itemid,85/" },
+    { "name": "Связаться с администратором", "href": "/component/option,com_contact/task,view/contact_id,1/Itemid,45/" },
+    { "name": "Консультация юриста", "href": "/component/option,com_contact/task,view/contact_id,2/Itemid,45/" },
+    { "name": "Поиск по сайту", "href": "/component/option,com_search/Itemid,5/" }
+  ],
+  "left": [
+    { "name": "Главная", "href": "/" },
+    { "name": "Работа для ветврачей", "href": "/component/option,com_neorecruit/Itemid,55/" },
+    { "name": "Новости ветеринарии", "href": "/content/category/1/14/57/" },
+    { "name": "Образование", "href": "/content/category/6/30/75/" },
+    { "name": "Ссылки. Обмен ссылками", "href": "/partners/" }
+  ],
+  "materials": [
+    { "name": "Ветеринарная терапия", "href": "/content/category/6/18/63/" },
+    { "name": "Ветеринарная хирургия", "href": "/content/category/6/19/64/" },
+    { "name": "Офтальмология", "href": "/content/category/6/20/65/" },
+    { "name": "Акушерство и гинекология", "href": "/content/category/6/21/66/" },
+    { "name": "Ветеринарная дерматология", "href": "/content/category/6/22/67/" },
+    { "name": "Инфекционные болезни", "href": "/content/category/6/29/74/" },
+    { "name": "Ветеринарная гомеопатия", "href": "/content/category/6/23/68/" },
+    { "name": "Зоопсихология", "href": "/content/category/6/24/69/" },
+    { "name": "Фармакология", "href": "/content/category/6/25/70/" },
+    { "name": "Диагностика в ветеринарии", "href": "/content/category/6/26/71/" },
+    { "name": "Экзотические животные", "href": "/content/category/6/27/72/" },
+    { "name": "Прочее", "href": "/content/category/6/28/73/" },
+    { "name": "Эндокринология", "href": "/content/category/9/35/90/" },
+    { "name": "Ветеринарная стоматология", "href": "/content/category/6/36/91/" },
+    { "name": "Онкология", "href": "/content/category/6/37/92/" }
+  ],
+  "reference": [
+    { "name": "Законодательство", "href": "/content/category/4/15/46/" },
+    { "name": "СанПины и ветправила", "href": "/content/category/4/16/60/" },
+    { "name": "Справочник организаций", "href": "/component/option,com_sobi2/Itemid,62/" }
+  ],
+  "guides": [
+    { "name": "Гомеопатический справочник", "href": "/content/category/9/34/89/" }
+  ]
+}
