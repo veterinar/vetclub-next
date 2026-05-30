@@ -33,7 +33,7 @@ export default async function CategoryPage({ params }: Props) {
         {articles.map((article) => (
           <Link
             key={article.id}
-            href={`/content/view/${article.id}/${category.id.split('/').pop()}/`}
+            href={`/article/${article.id}/`}
             className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-[#81c784] hover:shadow-sm transition-all"
           >
             <h2 className="font-semibold text-[#1b5e20]">{article.title}</h2>

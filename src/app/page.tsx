@@ -13,7 +13,7 @@ const categories = [
   { name: 'Нормативы', count: 15, color: 'bg-blue-50 text-blue-700 border-blue-200' },
   { name: 'Дерматология', count: 12, color: 'bg-amber-50 text-amber-700 border-amber-200' },
   { name: 'Хирургия', count: 8, color: 'bg-rose-50 text-rose-700 border-rose-200' },
-  { name: 'Терапия', count: 22, color: 'bg-#f1f8e9 text-#2e7d32 border-#2e7d32200' },
+  { name: 'Терапия', count: 22, color: 'bg-[#f1f8e9] text-[#2e7d32] border-[#2e7d32]/20' },
   { name: 'Диагностика', count: 14, color: 'bg-violet-50 text-violet-700 border-violet-200' },
   { name: 'Фармакология', count: 6, color: 'bg-cyan-50 text-cyan-700 border-cyan-200' },
   { name: 'Офтальмология', count: 5, color: 'bg-indigo-50 text-indigo-700 border-indigo-200' },
@@ -48,7 +48,7 @@ export default function HomePage() {
             >
               Ветеринария для профессионалов
             </h1>
-            <p className="text-lg md:text-xl text-#e8f5e9 mb-6 leading-relaxed"
+            <p className="text-lg md:text-xl text-[#e8f5e9] mb-6 leading-relaxed"
             >
               Справочная информация для ветврача. Обмен опытом лечения животных, 
               форум ветеринарных врачей, профессиональное сообщество.
@@ -84,14 +84,14 @@ export default function HomePage() {
           return (
             <Link
               key={article.id}
-              href={`/content/view/${article.id}/1/`}
-              className="group block bg-white p-5 rounded-xl border border-gray-200 hover:border-#81c784 hover:shadow-md transition-all"
+              href={`/article/${article.id}/`}
+              className="group block bg-white p-5 rounded-xl border border-gray-200 hover:border-[#81c784] hover:shadow-md transition-all"
             >
               <div className="flex items-start gap-4"
               >
-                <div className="w-10 h-10 rounded-lg bg-#f1f8e9 flex items-center justify-center flex-shrink-0 group-hover:bg-#e8f5e9 transition-colors"
+                <div className="w-10 h-10 rounded-lg bg-[#f1f8e9] flex items-center justify-center flex-shrink-0 group-hover:bg-[#e8f5e9] transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-#2e7d32" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-[#2e7d32]" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
@@ -105,7 +105,7 @@ export default function HomePage() {
                       {category}
                     </span>
                   </div>
-                  <h2 className="font-semibold text-gray-900 group-hover:text-#2e7d32 transition-colors"
+                  <h2 className="font-semibold text-gray-900 group-hover:text-[#2e7d32] transition-colors"
                   >
                     {article.title}
                   </h2>

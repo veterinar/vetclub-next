@@ -16,28 +16,28 @@
     { "name": "Ссылки. Обмен ссылками", "href": "/partners/" }
   ],
   "materials": [
-    { "name": "Ветеринарная терапия", "href": "/content/category/6/18/63/" },
-    { "name": "Ветеринарная хирургия", "href": "/content/category/6/19/64/" },
-    { "name": "Офтальмология", "href": "/content/category/6/20/65/" },
-    { "name": "Акушерство и гинекология", "href": "/content/category/6/21/66/" },
-    { "name": "Ветеринарная дерматология", "href": "/content/category/6/22/67/" },
-    { "name": "Инфекционные болезни", "href": "/content/category/6/29/74/" },
-    { "name": "Ветеринарная гомеопатия", "href": "/content/category/6/23/68/" },
-    { "name": "Зоопсихология", "href": "/content/category/6/24/69/" },
-    { "name": "Фармакология", "href": "/content/category/6/25/70/" },
-    { "name": "Диагностика в ветеринарии", "href": "/content/category/6/26/71/" },
-    { "name": "Экзотические животные", "href": "/content/category/6/27/72/" },
-    { "name": "Прочее", "href": "/content/category/6/28/73/" },
-    { "name": "Эндокринология", "href": "/content/category/9/35/90/" },
-    { "name": "Ветеринарная стоматология", "href": "/content/category/6/36/91/" },
-    { "name": "Онкология", "href": "/content/category/6/37/92/" }
+    { "name": "Ветеринарная терапия", "href": "/category/therapy/" },
+    { "name": "Ветеринарная хирургия", "href": "/category/surgery/" },
+    { "name": "Офтальмология", "href": "/category/ophthalmology/" },
+    { "name": "Акушерство и гинекология", "href": "/category/obstetrics/" },
+    { "name": "Ветеринарная дерматология", "href": "/category/dermatology/" },
+    { "name": "Инфекционные болезни", "href": "/category/infectious/" },
+    { "name": "Ветеринарная гомеопатия", "href": "/category/homeopathy/" },
+    { "name": "Зоопсихология", "href": "/category/zoopsychology/" },
+    { "name": "Фармакология", "href": "/category/pharmacology/" },
+    { "name": "Диагностика в ветеринарии", "href": "/category/diagnostics/" },
+    { "name": "Экзотические животные", "href": "/category/exotic/" },
+    { "name": "Прочее", "href": "/category/other/" },
+    { "name": "Эндокринология", "href": "/category/endocrinology/" },
+    { "name": "Ветеринарная стоматология", "href": "/category/stomatology/" },
+    { "name": "Онкология", "href": "/category/oncology/" }
   ],
   "reference": [
-    { "name": "Законодательство", "href": "/content/category/4/15/46/" },
-    { "name": "СанПины и ветправила", "href": "/content/category/4/16/60/" },
-    { "name": "Справочник организаций", "href": "/component/option,com_sobi2/Itemid,62/" }
+    { "name": "Законодательство", "href": "/category/legislation/" },
+    { "name": "СанПины и ветправила", "href": "/category/sanpin/" },
+    { "name": "Справочник организаций", "href": "/directory/" }
   ],
   "guides": [
-    { "name": "Гомеопатический справочник", "href": "/content/category/9/34/89/" }
+    { "name": "Гомеопатический справочник", "href": "/category/homeopathic-guide/" }
   ]
 }
