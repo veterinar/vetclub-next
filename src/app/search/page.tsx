@@ -6,9 +6,9 @@ export default function SearchPage() {
         <input
           type="text"
           placeholder="Введите запрос..."
-          className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-#f1f8e90"
         />
-        <button type="submit" className="px-6 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800">
+        <button type="submit" className="px-6 py-2 bg-#2e7d32 text-white rounded-lg hover:bg-#1b5e20">
           Поиск
         </button>
       </form>

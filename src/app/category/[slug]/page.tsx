@@ -34,9 +34,9 @@ export default async function CategoryPage({ params }: Props) {
           <Link
             key={article.id}
             href={`/content/view/${article.id}/${category.id.split('/').pop()}/`}
-            className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-emerald-300 hover:shadow-sm transition-all"
+            className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-#81c784 hover:shadow-sm transition-all"
           >
-            <h2 className="font-semibold text-emerald-800">{article.title}</h2>
+            <h2 className="font-semibold text-#1b5e20">{article.title}</h2>
             {article.description && (
               <p className="text-sm text-gray-500 mt-1">{article.description}</p>
             )}

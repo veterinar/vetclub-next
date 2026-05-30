@@ -30,7 +30,7 @@ export default async function CatchAllPage({ params }: Props) {
       return (
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <nav className="text-sm text-gray-500 mb-4">
-            <Link href="/" className="hover:text-emerald-700">← Главная</Link>
+            <Link href="/" className="hover:text-#2e7d32">← Главная</Link>
           </nav>
           <h1 className="text-2xl font-bold text-gray-900 mb-4">{article.title}</h1>
           <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: article.content }} />
@@ -60,9 +60,9 @@ export default async function CatchAllPage({ params }: Props) {
               <Link
                 key={article.id}
                 href={`/content/view/${article.id}/${categoryMatch[3]}/`}
-                className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-emerald-300 hover:shadow-sm transition-all"
+                className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-#81c784 hover:shadow-sm transition-all"
               >
-                <h2 className="font-semibold text-emerald-800">{article.title}</h2>
+                <h2 className="font-semibold text-#1b5e20">{article.title}</h2>
                 {article.description && <p className="text-sm text-gray-500 mt-1">{article.description}</p>}
               </Link>
             ))}
@@ -141,9 +141,9 @@ export default async function CatchAllPage({ params }: Props) {
           <input
             type="text"
             placeholder="Введите запрос..."
-            className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-#f1f8e90"
           />
-          <button type="submit" className="px-6 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800">
+          <button type="submit" className="px-6 py-2 bg-#2e7d32 text-white rounded-lg hover:bg-#1b5e20">
             Поиск
           </button>
         </form>
@@ -169,7 +169,7 @@ export default async function CatchAllPage({ params }: Props) {
             <label className="block text-sm font-medium text-gray-700 mb-1">Сообщение</label>
             <textarea rows={4} className="w-full px-3 py-2 border border-gray-200 rounded-lg" />
           </div>
-          <button type="submit" className="px-6 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800">
+          <button type="submit" className="px-6 py-2 bg-#2e7d32 text-white rounded-lg hover:bg-#1b5e20">
             Отправить
           </button>
         </form>

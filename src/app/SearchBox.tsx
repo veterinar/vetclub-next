@@ -43,13 +43,13 @@ export default function SearchBox() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Поиск по статьям..."
-            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white"
+            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-#f1f8e90 focus:border-transparent bg-white"
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="px-6 py-3 bg-emerald-700 text-white rounded-xl hover:bg-emerald-800 disabled:opacity-50 font-medium transition-colors"
+          className="px-6 py-3 bg-#2e7d32 text-white rounded-xl hover:bg-#1b5e20 disabled:opacity-50 font-medium transition-colors"
         >
           {loading ? '...' : 'Поиск'}
         </button>
@@ -64,10 +64,10 @@ export default function SearchBox() {
             <Link
               key={r.id}
               href={`/content/view/${r.id}/1/`}
-              className="block p-4 border-b border-gray-50 last:border-0 hover:bg-emerald-50 transition-colors"
+              className="block p-4 border-b border-gray-50 last:border-0 hover:bg-#f1f8e9 transition-colors"
               onClick={() => setOpen(false)}
             >
-              <div className="font-medium text-emerald-800">{r.title}</div>
+              <div className="font-medium text-#1b5e20">{r.title}</div>
             </Link>
           ))}
         </div>
