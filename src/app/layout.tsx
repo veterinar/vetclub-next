@@ -32,7 +32,7 @@ export default function RootLayout({
           <div id="top-head" style={{ border: '0 6px solid #bec1c7', background: '#f9fbff', height: 92 }}>
             <div className="relative">
               <span id="logo" style={{ position: 'absolute', top: 16, left: 21, width: 317, height: 68 }}>
-                <Link href="/" className="text-2xl font-bold" style={{ color: '#1b5e20' }}>
+                <Link href="/" className="text-2xl font-bold" style={{ color: '#3f7cb9' }}>
                   VetClub.ru
                 </Link>
                 <span className="block text-sm" style={{ color: '#666' }}>Ветеринария для профессионалов</span>
@@ -50,14 +50,14 @@ export default function RootLayout({
           </div>
 
           {/* Horizontal Menu */}
-          <div id="horiz-menu" style={{ border: '6px 6px 0 6px solid #bec1c7', background: '#2e7d32', height: 22 }}>
+          <div id="horiz-menu" style={{ border: '6px 6px 0 6px solid #bec1c7', background: '#488dd3', height: 22 }}>
             <nav className="flex items-center px-2 h-full">
               {menuData.top.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-white text-xs px-3 py-1 hover:bg-[#1b5e20]"
-                  style={{ borderRight: '1px solid #1b5e20' }}
+                  className="text-white text-xs px-3 py-1 hover:bg-[#3f7cb9]"
+                  style={{ borderRight: '1px solid #3f7cb9' }}
                 >
                   {item.name}
                 </Link>
@@ -150,7 +150,7 @@ export default function RootLayout({
                             placeholder="Поиск..."
                             className="w-full px-2 py-1 text-xs border border-gray-300"
                           />
-                          <button type="submit" className="text-xs bg-[#2e7d32] text-white px-2 py-1">
+                          <button type="submit" className="text-xs bg-[#488dd3] text-white px-2 py-1">
                             Искать
                           </button>
                         </form>

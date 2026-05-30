@@ -57,7 +57,7 @@ export default function HomePage() {
         <div className="space-y-2">
           {latestArticles.map((article) => (
             <article key={article.id} className="border-b border-gray-100 pb-2 last:border-0">
-              <h3 className="font-semibold text-xs text-[#1b5e20] mb-1">
+              <h3 className="font-semibold text-xs text-[#1a5da0] mb-1">
                 <Link href={`/content/view/${article.id}/1/`} className="hover:underline">
                   {article.title}
                 </Link>
@@ -76,10 +76,10 @@ export default function HomePage() {
         <div className="space-y-1">
           {mostRead.map((article) => (
             <div key={article.id} className="flex items-start gap-1 text-xs">
-              <span className="text-[#2e7d32] font-bold mt-0.5">→</span>
+              <span className="text-[#488dd3] font-bold mt-0.5">→</span>
               <Link 
                 href={`/content/view/${article.id}/${article.catid}/`} 
-                className="text-[#1b5e20] hover:underline"
+                className="text-[#1a5da0] hover:underline"
               >
                 {article.title}
               </Link>
@@ -96,7 +96,7 @@ export default function HomePage() {
             <div key={`${archive.year}-${archive.month}`} className="text-xs">
               <Link 
                 href={`/content/category/1/14/57/`} 
-                className="text-[#1b5e20] hover:underline"
+                className="text-[#1a5da0] hover:underline"
               >
                 {archive.name}
               </Link>
