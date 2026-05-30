@@ -41,11 +41,15 @@ export default async function CatchAllPage({ params }: Props) {
     }
   }
 
-  // Check for category: /content/category/:secid/:catid/:itemid/
-  const categoryMatch = fullPath.match(/^\/content\/category\/(\d+)\/(\d+)\/(\d+)\/?$/);
+  // Check for category: /content/category/:any/:any/:catid/ - last number is category ID
+  const categoryMatch = fullPath.match(/^\/content\/category\/\d+\/\d+\/(\d+)\/?$/);
   if (categoryMatch) {
-    const catId = `${categoryMatch[1]}/${categoryMatch[2]}/${categoryMatch[3]}`;
-    const category = categoriesData.find((c) => c.id === catId);
+    const catNumId = categoryMatch[1];
+    // Find category by last segment of ID
+    const category = categoriesData.find((c) => {
+      const parts = c.id.split('/');
+      return parts[parts.length - 1] === catNumId;
+    });
     if (category) {
       const articles = articlesData.filter((a) => category.articles.includes(a.id));
       return (
@@ -59,10 +63,10 @@ export default async function CatchAllPage({ params }: Props) {
             {articles.map((article) => (
               <Link
                 key={article.id}
-                href={`/content/view/${article.id}/${categoryMatch[3]}/`}
-                className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-#81c784 hover:shadow-sm transition-all"
+                href={`/content/view/${article.id}/${catNumId}/`}
+                className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-[#81c784] hover:shadow-sm transition-all"
               >
-                <h2 className="font-semibold text-#1b5e20">{article.title}</h2>
+                <h2 className="font-semibold text-[#1b5e20]">{article.title}</h2>
                 {article.description && <p className="text-sm text-gray-500 mt-1">{article.description}</p>}
               </Link>
             ))}
@@ -141,9 +145,9 @@ export default async function CatchAllPage({ params }: Props) {
           <input
             type="text"
             placeholder="Введите запрос..."
-            className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-#f1f8e90"
+            className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4caf50]"
           />
-          <button type="submit" className="px-6 py-2 bg-#2e7d32 text-white rounded-lg hover:bg-#1b5e20">
+          <button type="submit" className="px-6 py-2 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20]">
             Поиск
           </button>
         </form>
@@ -169,7 +173,7 @@ export default async function CatchAllPage({ params }: Props) {
             <label className="block text-sm font-medium text-gray-700 mb-1">Сообщение</label>
             <textarea rows={4} className="w-full px-3 py-2 border border-gray-200 rounded-lg" />
           </div>
-          <button type="submit" className="px-6 py-2 bg-#2e7d32 text-white rounded-lg hover:bg-#1b5e20">
+          <button type="submit" className="px-6 py-2 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20]">
             Отправить
           </button>
         </form>
