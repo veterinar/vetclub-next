@@ -63,7 +63,7 @@ export default function SearchBox() {
           {results.map((r) => (
             <Link
               key={r.id}
-              href={`/articles/${r.id}`}
+              href={`/content/view/${r.id}/1/`}
               className="block p-4 border-b border-gray-50 last:border-0 hover:bg-emerald-50 transition-colors"
               onClick={() => setOpen(false)}
             >

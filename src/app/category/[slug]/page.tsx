@@ -23,38 +23,25 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <div>
-      <div className="pathway mb-4">
-        <span className="pathway text-xs">
-          <Link href="/" className="hover:underline">Главная</Link>
-          <span className="px-1">→</span>
-          <span className="text-gray-500">{category.name}</span>
-        </span>
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-gray-900">{category.name}</h1>
+        <p className="text-gray-600 mt-1">{category.description}</p>
+        <div className="text-sm text-gray-500 mt-2">Всего статей: {articles.length}</div>
       </div>
 
-      <div className="content-box">
-        <div className="component-heading mb-4">{category.name}</div>
-        
-        <p className="text-xs text-gray-600 mb-2">{category.description}</p>
-        <div className="text-xs text-gray-500 mb-4">Всего статей: {articles.length}</div>
-
-        <div className="space-y-1">
-          {articles.map((article) => (
-            <div
-              key={article.id}
-              className="border-b border-gray-100 pb-2 last:border-0"
-            >
-              <Link
-                href={`/content/view/${article.id}/${category.id.split('/').pop()}/`}
-                className="text-sm text-[#1a5da0] hover:underline block"
-              >
-                {article.title}
-              </Link>
-              {article.description && (
-                <p className="text-xs text-gray-500 mt-0.5">{article.description}</p>
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="grid gap-3">
+        {articles.map((article) => (
+          <Link
+            key={article.id}
+            href={`/content/view/${article.id}/${category.id.split('/').pop()}/`}
+            className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-emerald-300 hover:shadow-sm transition-all"
+          >
+            <h2 className="font-semibold text-emerald-800">{article.title}</h2>
+            {article.description && (
+              <p className="text-sm text-gray-500 mt-1">{article.description}</p>
+            )}
+          </Link>
+        ))}
       </div>
     </div>
   );

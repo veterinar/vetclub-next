@@ -1,109 +1,126 @@
 import articlesData from '@/data/index.json';
 import Link from 'next/link';
+import SearchBox from './SearchBox';
 
-const mostRead = [
-  { id: '58', title: 'Диагностика и лечение мочекаменной болезни у котов', catid: '63' },
-  { id: '385', title: 'Гериатрия в ветеринарии. Особенности ухода и лечения старых собак и кошек', catid: '73' },
-  { id: '387', title: 'Национальная ветеринарная конференция 2013', catid: '57' },
-  { id: '382', title: 'Новый закон "О ветеринарии" должен вступить в силу 1 января 2014 года', catid: '57' },
-  { id: '40', title: 'Личные странички ветеринарных врачей', catid: '1' },
-  { id: '90', title: 'Нарушения пигментации шерсти у собак', catid: '63' },
-  { id: '366', title: 'Диагностика зуда в области головы и шеи у кошек', catid: '67' },
-  { id: '83', title: 'Добавили возможность ведения блогов', catid: '1' },
-  { id: '101', title: 'Консультации ветеринарных врачей', catid: '63' },
-  { id: '346', title: 'В Москве разработан новый проект закона о содержании кошек и собак', catid: '57' },
-  { id: '350', title: 'УЗИ мочеполовой системы у кошек', catid: '71' },
-  { id: '76', title: 'Лечение дерматологических заболеваний у животных', catid: '67' },
-  { id: '381', title: 'Опухоли желудочно-кишечного тракта у кошек и собак', catid: '64' },
-  { id: '333', title: 'Пироплазмоз собак (бабезиоз). Характеристики мазков крови при бабезиозе (пироплазмозе) у собак', catid: '71' },
-  { id: '390', title: 'Уремия (уремический синдром) у кошек', catid: '63' },
-  { id: '361', title: 'Синдром вздутия и заворота желудка', catid: '64' },
-  { id: '363', title: 'Неврит «конского хвоста» у собаки', catid: '73' },
-  { id: '383', title: 'Увеит у собак и кошек. Клинические признаки, диагностика и лечение увеитов', catid: '65' },
-  { id: '25', title: 'Сибирская язва. Санитарные правила СП 3.1.089-96. Ветеринарные правила ВП 13.3.1320-96"', catid: '60' },
-  { id: '354', title: 'Профилактика и лечение заболеваний периодонта у собак и кошек. Часть 2.', catid: '91' },
+interface ArticleIndex {
+  id: string;
+  title: string;
+  description?: string;
+  url: string;
+}
+
+const categories = [
+  { name: 'Нормативы', count: 15, color: 'bg-blue-50 text-blue-700 border-blue-200' },
+  { name: 'Дерматология', count: 12, color: 'bg-amber-50 text-amber-700 border-amber-200' },
+  { name: 'Хирургия', count: 8, color: 'bg-rose-50 text-rose-700 border-rose-200' },
+  { name: 'Терапия', count: 22, color: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+  { name: 'Диагностика', count: 14, color: 'bg-violet-50 text-violet-700 border-violet-200' },
+  { name: 'Фармакология', count: 6, color: 'bg-cyan-50 text-cyan-700 border-cyan-200' },
+  { name: 'Офтальмология', count: 5, color: 'bg-indigo-50 text-indigo-700 border-indigo-200' },
+  { name: 'Стоматология', count: 4, color: 'bg-pink-50 text-pink-700 border-pink-200' },
 ];
 
-const archives = [
-  { year: '2010', month: '08', name: 'August, 2010' },
-  { year: '2010', month: '05', name: 'May, 2010' },
-  { year: '2010', month: '01', name: 'January, 2010' },
-  { year: '2009', month: '11', name: 'November, 2009' },
-  { year: '2009', month: '03', name: 'March, 2009' },
-  { year: '2009', month: '02', name: 'February, 2009' },
-  { year: '2008', month: '12', name: 'December, 2008' },
-];
+function getCategory(title: string): string {
+  const t = title.toLowerCase();
+  if (t.includes('правил') || t.includes('закон') || t.includes('сп') || t.includes('норм') || t.includes('инструкц')) return 'Нормативы';
+  if (t.includes('дермат') || t.includes('кож') || t.includes('аллерг') || t.includes('пиодерм') || t.includes('зуд')) return 'Дерматология';
+  if (t.includes('хирург') || t.includes('операц') || t.includes('шов') || t.includes('травм') || t.includes('кист')) return 'Хирургия';
+  if (t.includes('узи') || t.includes('рентген') || t.includes('диагност') || t.includes('лаборатор') || t.includes('ока')) return 'Диагностика';
+  if (t.includes('глаз') || t.includes('uveit') || t.includes('uveit') || t.includes('глауком')) return 'Офтальмология';
+  if (t.includes('зуб') || t.includes('стомат') || t.includes('пародонт')) return 'Стоматология';
+  if (t.includes('препарат') || t.includes('лекарств') || t.includes('вакцин') || t.includes('моксидектин')) return 'Фармакология';
+  return 'Терапия';
+}
 
 export default function HomePage() {
-  const latestArticles = articlesData.slice(0, 10);
+  const articles: ArticleIndex[] = articlesData;
 
   return (
-    <div className="space-y-4">
-      {/* Registration Module */}
-      <div className="content-box">
-        <div className="module-heading">О регистрации на сайте</div>
-        <p className="text-xs text-gray-700 leading-relaxed">
-          Проект VetClub.ru — первая в России социальная сеть ветеринарных врачей, 
-          сообщество профессионалов с закрытм членством. Членами клуба становятся практикующие 
-          ветеринарные врачи, менеджеры ветеринарных клиник, и ветфельдшеры. 
-          При регистрации все поля формы являются обязательными. 
-          Активация пользователя проводится администратором после проверки данных.
-        </p>
-      </div>
-
-      {/* Latest Articles */}
-      <div className="content-box">
-        <div className="module-heading">Последние публикации</div>
-        <div className="space-y-2">
-          {latestArticles.map((article) => (
-            <article key={article.id} className="border-b border-gray-100 pb-2 last:border-0">
-              <h3 className="font-semibold text-xs text-[#1a5da0] mb-1">
-                <Link href={`/content/view/${article.id}/1/`} className="hover:underline">
-                  {article.title}
-                </Link>
-              </h3>
-              {article.description && (
-                <p className="text-xs text-gray-500 line-clamp-2">{article.description}</p>
-              )}
-            </article>
-          ))}
-        </div>
-      </div>
-
-      {/* Most Read */}
-      <div className="content-box">
-        <div className="module-heading">Популярные</div>
-        <div className="space-y-1">
-          {mostRead.map((article) => (
-            <div key={article.id} className="flex items-start gap-1 text-xs">
-              <span className="text-[#488dd3] font-bold mt-0.5">→</span>
-              <Link 
-                href={`/content/view/${article.id}/${article.catid}/`} 
-                className="text-[#1a5da0] hover:underline"
+    <main>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-emerald-700 to-teal-800 text-white rounded-2xl mb-8"
+      >
+        <div className="px-4 sm:px-6 py-12 md:py-16"
+        >
+          <div className="max-w-3xl"
+          >
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+            >
+              Ветеринария для профессионалов
+            </h1>
+            <p className="text-lg md:text-xl text-emerald-100 mb-6 leading-relaxed"
+            >
+              Справочная информация для ветврача. Обмен опытом лечения животных, 
+              форум ветеринарных врачей, профессиональное сообщество.
+            </p>
+            <div className="flex flex-wrap gap-3"
+            >
+              <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-lg text-sm font-medium"
               >
-                {article.title}
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Archives */}
-      <div className="content-box">
-        <div className="module-heading">Архив новостей</div>
-        <div className="space-y-1">
-          {archives.map((archive) => (
-            <div key={`${archive.year}-${archive.month}`} className="text-xs">
-              <Link 
-                href={`/content/category/1/14/57/`} 
-                className="text-[#1a5da0] hover:underline"
+                {articles.length} статей
+              </span>
+              <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-lg text-sm font-medium"
               >
-                {archive.name}
-              </Link>
+                Нормативные документы
+              </span>
+              <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-lg text-sm font-medium"
+              >
+                Клинические случаи
+              </span>
             </div>
-          ))}
+          </div>
         </div>
+      </section>
+
+      <SearchBox />
+
+      {/* Articles Grid */}
+      <div className="grid gap-4"
+      >
+        {articles.map((article) => {
+          const category = getCategory(article.title);
+          const catStyle = categories.find(c => c.name === category)?.color || 'bg-gray-50 text-gray-700 border-gray-200';
+          
+          return (
+            <Link
+              key={article.id}
+              href={`/content/view/${article.id}/1/`}
+              className="group block bg-white p-5 rounded-xl border border-gray-200 hover:border-emerald-300 hover:shadow-md transition-all"
+            >
+              <div className="flex items-start gap-4"
+              >
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-100 transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0"
+                >
+                  <div className="flex items-center gap-2 mb-1"
+                  >
+                    <span className={`text-xs px-2 py-0.5 rounded-full border ${catStyle}`}
+                    >
+                      {category}
+                    </span>
+                  </div>
+                  <h2 className="font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors"
+                  >
+                    {article.title}
+                  </h2>
+                  {article.description && (
+                    <p className="text-sm text-gray-500 mt-1 line-clamp-2"
+                    >
+                      {article.description}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
-    </div>
+    </main>
   );
 }

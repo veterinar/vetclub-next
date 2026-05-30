@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VetClub.ru - Ветеринария для профессионалов",
-  description: "Первая в России социальная сеть ветеринарных врачей",
+  title: "VetClub.ru — Ветеринария для профессионалов",
+  description: "Справочная информация для ветврача. Обмен опытом лечения животных, форум ветеринарных врачей, вакансии для ветеринаров.",
 };
 
 export default function RootLayout({
@@ -26,164 +26,101 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
-        <div className="wrapper" style={{ maxWidth: 950, margin: '0 auto' }}>
-          {/* Top Header */}
-          <div id="top-head" style={{ border: '0 6px solid #bec1c7', background: '#f9fbff', height: 92 }}>
-            <div className="relative">
-              <span id="logo" style={{ position: 'absolute', top: 16, left: 21, width: 317, height: 68 }}>
-                <Link href="/" className="text-2xl font-bold" style={{ color: '#3f7cb9' }}>
-                  VetClub.ru
-                </Link>
-                <span className="block text-sm" style={{ color: '#666' }}>Ветеринария для профессионалов</span>
-              </span>
-              <div id="top-mod" style={{ margin: '10px 5px 10px 470px', height: 47, overflow: 'hidden' }}>
-                <div className="flex items-center gap-2 text-xs">
-                  <span className="text-gray-500">Статьи</span>
-                  <span className="text-gray-400">|</span>
-                  <span className="text-gray-500">Форум</span>
-                  <span className="text-gray-400">|</span>
-                  <span className="text-gray-500">Вакансии</span>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 min-h-screen flex flex-col`}
+      >
+        <header className="bg-white border-b border-emerald-100 shadow-sm sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <a href="/" className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
                 </div>
+                <span className="text-xl font-bold text-emerald-800 tracking-tight">VetClub.ru</span>
+              </a>
+              
+              <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+                {menuData.top.slice(0, 5).map((item) => (
+                  <Link key={item.href} href={item.href} className="text-gray-600 hover:text-emerald-700 transition-colors">
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
+              
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full font-medium">118 статей</span>
               </div>
             </div>
           </div>
+        </header>
 
-          {/* Horizontal Menu */}
-          <div id="horiz-menu" style={{ border: '6px 6px 0 6px solid #bec1c7', background: '#488dd3', height: 22 }}>
-            <nav className="flex items-center px-2 h-full">
-              {menuData.top.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-white text-xs px-3 py-1 hover:bg-[#3f7cb9]"
-                  style={{ borderRight: '1px solid #3f7cb9' }}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
+        <div className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Sidebar */}
+            <aside className="lg:w-64 flex-shrink-0">
+              <div className="bg-white rounded-xl border border-gray-200 p-4 mb-4">
+                <h3 className="font-semibold text-gray-900 mb-3 text-sm">Меню</h3>
+                <div className="space-y-1">
+                  {menuData.left.map((item) => (
+                    <Link key={item.href} href={item.href} className="block text-sm text-gray-600 hover:text-emerald-700 py-1">
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="bg-white rounded-xl border border-gray-200 p-4 mb-4">
+                <h3 className="font-semibold text-gray-900 mb-3 text-sm">Материалы</h3>
+                <div className="space-y-1">
+                  {menuData.materials.map((item) => (
+                    <Link key={item.href} href={item.href} className="block text-sm text-gray-600 hover:text-emerald-700 py-1">
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="bg-white rounded-xl border border-gray-200 p-4">
+                <h3 className="font-semibold text-gray-900 mb-3 text-sm">Справочная информация</h3>
+                <div className="space-y-1">
+                  {menuData.reference.map((item) => (
+                    <Link key={item.href} href={item.href} className="block text-sm text-gray-600 hover:text-emerald-700 py-1">
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </aside>
 
-          {/* Main Content Area */}
-          <div id="outer-border" style={{ border: '0 6px 6px 6px solid #e0e0e0' }}>
-            <table className="outer w-full" cellPadding={0} cellSpacing={0}>
-              <tbody>
-                <tr className="align-top">
-                  {/* Left Sidebar */}
-                  <td className="left" style={{ width: '22%', border: '6px 6px 0 6px solid #cdd1d7', background: '#f9fbff', padding: 6 }}>
-                    <div className="sidepad">
-                      <div className="sidebar-box">
-                        <div className="module-heading">Меню</div>
-                        {menuData.left.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="nav-link text-xs"
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-
-                      <div className="sidebar-box">
-                        <div className="module-heading">Материалы</div>
-                        {menuData.materials.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="nav-link text-xs"
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-
-                      <div className="sidebar-box">
-                        <div className="module-heading">Справочная информация</div>
-                        {menuData.reference.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="nav-link text-xs"
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-
-                      <div className="sidebar-box">
-                        <div className="module-heading">Справочники</div>
-                        {menuData.guides.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="nav-link text-xs"
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </td>
-
-                  {/* Middle Content */}
-                  <td className="middle" style={{ border: '6px 6px 0 6px solid #e0e0e0', background: '#fff', padding: '6px 10px' }}>
-                    <div className="padding">
-                      <div className="pathway">
-                        <span className="pathway text-xs">
-                          <Link href="/" className="hover:underline">Главная</Link>
-                        </span>
-                      </div>
-                      {children}
-                    </div>
-                  </td>
-
-                  {/* Right Sidebar */}
-                  <td className="right" style={{ width: '22%', border: '6px 6px 0 6px solid #cdd1d7', background: '#f9fbff', padding: 6 }}>
-                    <div className="sidepad">
-                      <div className="sidebar-box">
-                        <div className="module-heading">Поиск</div>
-                        <form className="flex flex-col gap-2">
-                          <input
-                            type="text"
-                            placeholder="Поиск..."
-                            className="w-full px-2 py-1 text-xs border border-gray-300"
-                          />
-                          <button type="submit" className="text-xs bg-[#488dd3] text-white px-2 py-1">
-                            Искать
-                          </button>
-                        </form>
-                      </div>
-
-                      <div className="sidebar-box">
-                        <div className="module-heading">Рекомендуем</div>
-                        <div className="text-xs space-y-2">
-                          <Link href="/content/view/58/63/" className="block hover:underline">
-                            Диагностика мочекаменной болезни
-                          </Link>
-                          <Link href="/content/view/385/73/" className="block hover:underline">
-                            Гериатрия в ветеринарии
-                          </Link>
-                          <Link href="/content/view/387/57/" className="block hover:underline">
-                            Национальная конференция 2013
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Footer */}
-          <div id="bot-footer" style={{ border: '6px 6px 0 6px solid #cdd1d7', background: '#babfc7', height: 38, textAlign: 'center', lineHeight: '38px', color: '#74777c' }}>
-            <span className="text-xs">
-              © 2008-2014 VetClub.ru - Ветеринария для профессионалов
-            </span>
+            {/* Main Content */}
+            <main className="flex-1 min-w-0">
+              {children}
+            </main>
           </div>
         </div>
+
+        <footer className="bg-white border-t border-gray-200 mt-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <span className="font-semibold text-gray-700">VetClub.ru</span>
+              </div>
+              <p className="text-sm text-gray-500">
+                Клуб ветеринарных врачей — справочная информация, обмен опытом, профессиональное сообщество
+              </p>
+              <div className="flex gap-4 text-sm text-gray-500">
+                <span>© 2008–2026</span>
+              </div>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

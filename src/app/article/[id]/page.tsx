@@ -41,29 +41,19 @@ export default async function ArticlePage({ params }: Props) {
     const article = await import(`../../data/articles/${id}.json`) as Article;
 
     return (
-      <div>
-        <div className="pathway mb-4">
-          <span className="pathway text-xs">
-            <Link href="/" className="hover:underline">Главная</Link>
-            <span className="px-1">→</span>
-            <span className="text-gray-500">{article.title}</span>
-          </span>
-        </div>
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <nav className="text-sm text-gray-500 mb-4">
+          <Link href="/" className="hover:text-emerald-700 flex items-center gap-1">
+            ← Главная
+          </Link>
+        </nav>
 
-        <div className="content-box">
-          <div className="content-heading mb-4">{article.title}</div>
-          
-          {article.description && (
-            <div className="text-xs text-gray-500 mb-4 italic">
-              {article.description}
-            </div>
-          )}
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">{article.title}</h1>
 
-          <div
-            className="prose prose-sm max-w-none"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
-        </div>
+        <div
+          className="prose prose-lg max-w-none"
+          dangerouslySetInnerHTML={{ __html: article.content }}
+        />
       </div>
     );
   } catch {

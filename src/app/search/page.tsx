@@ -1,18 +1,18 @@
 export default function SearchPage() {
   return (
-    <div className="content-box">
-      <div className="component-heading mb-4">Поиск по сайту</div>
+    <div className="bg-white rounded-xl border border-gray-200 p-6">
+      <h1 className="text-2xl font-bold text-gray-900 mb-4">Поиск по сайту</h1>
       <form className="flex gap-2">
         <input
           type="text"
           placeholder="Введите запрос..."
-          className="flex-1 px-2 py-1 text-xs border border-gray-200"
+          className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
         />
-        <button type="submit" className="px-4 py-1 bg-[#488dd3] text-white text-xs">
+        <button type="submit" className="px-6 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800">
           Поиск
         </button>
       </form>
-      <p className="text-xs text-gray-500 mt-2">Поиск по статьям и материалам сайта</p>
+      <p className="text-sm text-gray-500 mt-2">Поиск по статьям и материалам сайта</p>
     </div>
   );
 }
