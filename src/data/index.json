@@ -3,43 +3,50 @@
     "id": "100",
     "title": "Санитарно-эпидемиологические правила и нормативы СанПиН 2.2.1/2.1.1.1200-03. Новая редакция",
     "description": "",
-    "url": "content/view/100"
+    "url": "content/view/100",
+    "catid": "46"
   },
   {
     "id": "101",
     "title": "Консультации ветеринарных врачей",
     "description": "",
-    "url": "content/view/101"
+    "url": "content/view/101",
+    "catid": "46"
   },
   {
     "id": "103",
     "title": "Кишечные паразиты собак и кошек",
     "description": "",
-    "url": "content/view/103"
+    "url": "content/view/103",
+    "catid": "63"
   },
   {
     "id": "104",
     "title": "Пищевая аллергия и пищевая непереносимость у собак",
     "description": "",
-    "url": "content/view/104"
+    "url": "content/view/104",
+    "catid": "63"
   },
   {
     "id": "107",
     "title": "Поверхностная пиодерма",
     "description": "",
-    "url": "content/view/107"
+    "url": "content/view/107",
+    "catid": "63"
   },
   {
     "id": "108",
     "title": "Выведение из гиповолемического шока",
     "description": "",
-    "url": "content/view/108"
+    "url": "content/view/108",
+    "catid": "63"
   },
   {
     "id": "11",
     "title": "Правила оказания ветеринарных услуг (новая редакция от 14.12.2006 № 767)",
     "description": "",
-    "url": "content/view/11"
+    "url": "content/view/11",
+    "catid": "46"
   },
   {
     "id": "110",
@@ -51,13 +58,15 @@
     "id": "114",
     "title": "Демодекоз у собак",
     "description": "",
-    "url": "content/view/114"
+    "url": "content/view/114",
+    "catid": "63"
   },
   {
     "id": "115",
     "title": "Эктопаразиты (блохи, клещи) у собак и кошек",
     "description": "",
-    "url": "content/view/115"
+    "url": "content/view/115",
+    "catid": "63"
   },
   {
     "id": "117",
@@ -69,163 +78,190 @@
     "id": "118",
     "title": "Аллергические дерматозы у собак и кошек. Наиболее частые кожные заболевания аллергического характера.",
     "description": "",
-    "url": "content/view/118"
+    "url": "content/view/118",
+    "catid": "73"
   },
   {
     "id": "12",
     "title": "Положение о лицензировании ветеринарной фармацевтической деятельности",
     "description": "",
-    "url": "content/view/12"
+    "url": "content/view/12",
+    "catid": "46"
   },
   {
     "id": "121",
     "title": "Травмы и кисты селезенки у собак: диагностика и лечение",
     "description": "",
-    "url": "content/view/121"
+    "url": "content/view/121",
+    "catid": "63"
   },
   {
     "id": "122",
     "title": "Инородные тела в пищеводе у собак. Диагностика и методы оперативного лечения",
     "description": "",
-    "url": "content/view/122"
+    "url": "content/view/122",
+    "catid": "63"
   },
   {
     "id": "124",
     "title": "Зимовка и постзимовочная анорексия у черепах",
     "description": "",
-    "url": "content/view/124"
+    "url": "content/view/124",
+    "catid": "63"
   },
   {
     "id": "126",
     "title": "Нарушения сердечного ритма у животных при анестезии",
     "description": "",
-    "url": "content/view/126"
+    "url": "content/view/126",
+    "catid": "63"
   },
   {
     "id": "128",
     "title": "Глаукома. Высокое внутриглазное давление. Острый приступ глаукомы",
     "description": "",
-    "url": "content/view/128"
+    "url": "content/view/128",
+    "catid": "46"
   },
   {
     "id": "129",
     "title": "Правила по профилактике и борьбе с лейкозом крупного рогатого скота",
     "description": "",
-    "url": "content/view/129"
+    "url": "content/view/129",
+    "catid": "46"
   },
   {
     "id": "13",
     "title": "Об организации лицензирования отдельных видов деятельности",
     "description": "",
-    "url": "content/view/13"
+    "url": "content/view/13",
+    "catid": "46"
   },
   {
     "id": "130",
     "title": "Правила по профилактике и ликвидации некробактериоза животных",
     "description": "",
-    "url": "content/view/130"
+    "url": "content/view/130",
+    "catid": "46"
   },
   {
     "id": "131",
     "title": "Правила по профилактике и ликвидации туберкулеза СП 3.1.093-96, ВП 13.3.1325-96",
     "description": "",
-    "url": "content/view/131"
+    "url": "content/view/131",
+    "catid": "46"
   },
   {
     "id": "132",
     "title": "Правила по борьбе с гриппом птиц",
     "description": "",
-    "url": "content/view/132"
+    "url": "content/view/132",
+    "catid": "46"
   },
   {
     "id": "133",
     "title": "Инструкция по предупреждению и ликвидации сапа",
     "description": "",
-    "url": "content/view/133"
+    "url": "content/view/133",
+    "catid": "46"
   },
   {
     "id": "134",
     "title": "Перечень карантинных и особо опасных болезней животных",
     "description": "",
-    "url": "content/view/134"
+    "url": "content/view/134",
+    "catid": "46"
   },
   {
     "id": "135",
     "title": "Демодекоз",
     "description": "",
-    "url": "content/view/135"
+    "url": "content/view/135",
+    "catid": "63"
   },
   {
     "id": "14",
     "title": "Закон \"О ветеринарии\" в последней редакции от 21.07.2007",
     "description": "",
-    "url": "content/view/14"
+    "url": "content/view/14",
+    "catid": "46"
   },
   {
     "id": "15",
     "title": "Об утверждении положения о государственном ветеринарном надзоре в Российской Федерации",
     "description": "",
-    "url": "content/view/15"
+    "url": "content/view/15",
+    "catid": "46"
   },
   {
     "id": "16",
     "title": "О вредных условиях труда в ветеринарии",
     "description": "",
-    "url": "content/view/16"
+    "url": "content/view/16",
+    "catid": "46"
   },
   {
     "id": "17",
     "title": "Ветеринарно-санитарные правила сбора, утилизации и уничтожения биологических отходов",
     "description": "",
-    "url": "content/view/17"
+    "url": "content/view/17",
+    "catid": "46"
   },
   {
     "id": "18",
     "title": "Ветеринарно-санитарные правила использования и переработки импортного мяса и мясопродуктов",
     "description": "",
-    "url": "content/view/18"
+    "url": "content/view/18",
+    "catid": "46"
   },
   {
     "id": "19",
     "title": "Профилактика и борьба с заразными болезнями, общими для человека и животных. Общие положения",
     "description": "",
-    "url": "content/view/19"
+    "url": "content/view/19",
+    "catid": "46"
   },
   {
     "id": "20",
     "title": "Бешенство. Санитарные правила СП 3.1.096-96. Ветеринарные правила ВП 13.3.1103-96\"",
     "description": "",
-    "url": "content/view/20"
+    "url": "content/view/20",
+    "catid": "46"
   },
   {
     "id": "21",
     "title": "Бруцеллез. Санитарные правила СП 3.1.085-96. Ветеринарные правила ВП 13.3.1302-96\"",
     "description": "",
-    "url": "content/view/21"
+    "url": "content/view/21",
+    "catid": "46"
   },
   {
     "id": "22",
     "title": "Сальмонеллез. Санитарные правила СП 3.1.086-96. Ветеринарные правила ВП 13.4.1318-96\"",
     "description": "",
-    "url": "content/view/22"
+    "url": "content/view/22",
+    "catid": "46"
   },
   {
     "id": "23",
     "title": "Кампилобактериоз. Санитарные правила СП 3.1.087-96. Ветеринарные правила ВП 13.4.1307-96\"",
     "description": "",
-    "url": "content/view/23"
+    "url": "content/view/23",
+    "catid": "46"
   },
   {
     "id": "24",
     "title": "Листериоз. Санитарные правила СП 3.1.088-96 Ветеринарные правила. ВП 13.4.1311-96\"",
     "description": "",
-    "url": "content/view/24"
+    "url": "content/view/24",
+    "catid": "46"
   },
   {
     "id": "25",
     "title": "Сибирская язва. Санитарные правила СП 3.1.089-96. Ветеринарные правила ВП 13.3.1320-96\"",
     "description": "",
-    "url": "content/view/25"
+    "url": "content/view/25",
+    "catid": "46"
   },
   {
     "id": "250",
@@ -237,79 +273,92 @@
     "id": "26",
     "title": "Лептоспироз. Санитарные правила СП 3.1.091-96. Ветеринарные правила ВП 13.3.1310-96\"",
     "description": "",
-    "url": "content/view/26"
+    "url": "content/view/26",
+    "catid": "46"
   },
   {
     "id": "27",
     "title": "Орнитоз. Санитарные правила СП 3.1.092-96. Ветеринарные правила ВП 13.4.1211-96\"",
     "description": "",
-    "url": "content/view/27"
+    "url": "content/view/27",
+    "catid": "46"
   },
   {
     "id": "28",
     "title": "Иерсиниозы. Санитарные правила СП 3.1.094-96. Ветеринарные правила ВП 13.3.1318-96\"",
     "description": "",
-    "url": "content/view/28"
+    "url": "content/view/28",
+    "catid": "46"
   },
   {
     "id": "281",
     "title": "Неотложные хирургические вмешательства на желудочно-кишечном тракте",
     "description": "",
-    "url": "content/view/281"
+    "url": "content/view/281",
+    "catid": "63"
   },
   {
     "id": "29",
     "title": "Коксиеллез (лихорадка Ку). Санитарные Правила СП 3.1.095-96. Ветеринарные Правила ВП 13.3.1221-96\"",
     "description": "",
-    "url": "content/view/29"
+    "url": "content/view/29",
+    "catid": "46"
   },
   {
     "id": "30",
     "title": "Туляремия. Санитарные правила СП 3.1.097-96",
     "description": "",
-    "url": "content/view/30"
+    "url": "content/view/30",
+    "catid": "46"
   },
   {
     "id": "31",
     "title": "Клещевой энцефалит. Санитарные правила СП 3.1.098-96",
     "description": "",
-    "url": "content/view/31"
+    "url": "content/view/31",
+    "catid": "46"
   },
   {
     "id": "32",
     "title": "Геморрагическая лихорадка с почечным синдромом. Санитарные правила СП 3.1.099-96",
     "description": "",
-    "url": "content/view/32"
+    "url": "content/view/32",
+    "catid": "46"
   },
   {
     "id": "33",
     "title": "Ветеринарно - санитарные нормы и требования к качеству кормов для непродуктивных животных",
     "description": "",
-    "url": "content/view/33"
+    "url": "content/view/33",
+    "catid": "46"
   },
   {
     "id": "330",
     "title": "Остеосаркома у кошек",
     "description": "",
-    "url": "content/view/330"
+    "url": "content/view/330",
+    "catid": "63"
   },
   {
     "id": "331",
     "title": "Гемолитические анемии, обусловленные нарушениями иммунитета",
     "description": "",
-    "url": "content/view/331"
+    "url": "content/view/331",
+    "catid": "63"
   },
   {
     "id": "332",
     "title": "Повреждение трахеи у кошки после интубации",
     "description": "",
-    "url": "content/view/332"
+    "url": "content/view/332",
+    "catid": "63"
   },
   {
     "id": "333",
     "title": "Пироплазмоз собак (бабезиоз). Характеристики мазков крови при бабезиозе (пироплазмозе) у собак",
     "description": "",
-    "url": "content/view/333"
+    "url": "content/view/333",
+    "catid": "46"
   },
   {
     "id": "335",
@@ -321,7 +370,8 @@
     "id": "342",
     "title": "Болезни зубов у собак и кошек. Эндодонтия",
     "description": "",
-    "url": "content/view/342"
+    "url": "content/view/342",
+    "catid": "63"
   },
   {
     "id": "343",
@@ -333,253 +383,295 @@
     "id": "344",
     "title": "Лекарства, которыми мы лечим животных",
     "description": "",
-    "url": "content/view/344"
+    "url": "content/view/344",
+    "catid": "63"
   },
   {
     "id": "347",
     "title": "Стоматологический инструмент для удаления зубов у собак и кошек",
     "description": "",
-    "url": "content/view/347"
+    "url": "content/view/347",
+    "catid": "46"
   },
   {
     "id": "349",
     "title": "Проведение ОКА крови при помощи гематологического анализатора",
     "description": "",
-    "url": "content/view/349"
+    "url": "content/view/349",
+    "catid": "46"
   },
   {
     "id": "35",
     "title": "О защите прав юридических лиц и индивидуальных предпринимателей про проведении госконтроля",
     "description": "",
-    "url": "content/view/35"
+    "url": "content/view/35",
+    "catid": "46"
   },
   {
     "id": "350",
     "title": "УЗИ мочеполовой системы у кошек",
     "description": "",
-    "url": "content/view/350"
+    "url": "content/view/350",
+    "catid": "46"
   },
   {
     "id": "353",
     "title": "Профилактика и лечение заболеваний периодонта у собак и кошек. Часть 1.",
     "description": "",
-    "url": "content/view/353"
+    "url": "content/view/353",
+    "catid": "46"
   },
   {
     "id": "355",
     "title": "Рекомендуемые лабораторные исследования при основных заболеваниях собак и кошек",
     "description": "",
-    "url": "content/view/355"
+    "url": "content/view/355",
+    "catid": "46"
   },
   {
     "id": "361",
     "title": "Синдром вздутия и заворота желудка",
     "description": "",
-    "url": "content/view/361"
+    "url": "content/view/361",
+    "catid": "46"
   },
   {
     "id": "363",
     "title": "Неврит «конского хвоста» у собаки",
     "description": "",
-    "url": "content/view/363"
+    "url": "content/view/363",
+    "catid": "46"
   },
   {
     "id": "366",
     "title": "Диагностика зуда в области головы и шеи у кошек",
     "description": "",
-    "url": "content/view/366"
+    "url": "content/view/366",
+    "catid": "46"
   },
   {
     "id": "368",
     "title": "Способы определения частоты работы сердца с помощью ЭКГ",
     "description": "",
-    "url": "content/view/368"
+    "url": "content/view/368",
+    "catid": "46"
   },
   {
     "id": "369",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/369"
+    "url": "content/view/369",
+    "catid": "46"
   },
   {
     "id": "371",
     "title": "Пpинципы микроскопии в дерматологии",
     "description": "",
-    "url": "content/view/371"
+    "url": "content/view/371",
+    "catid": "46"
   },
   {
     "id": "372",
     "title": "Мифы и факты в ветеринарной дерматологии",
     "description": "",
-    "url": "content/view/372"
+    "url": "content/view/372",
+    "catid": "46"
   },
   {
     "id": "373",
     "title": "УЗИ щитовидной и паращитовидной желез. Норма и патологии",
     "description": "",
-    "url": "content/view/373"
+    "url": "content/view/373",
+    "catid": "46"
   },
   {
     "id": "374",
     "title": "Билиарный (желчный) сладж у собак",
     "description": "",
-    "url": "content/view/374"
+    "url": "content/view/374",
+    "catid": "46"
   },
   {
     "id": "376",
     "title": "Состояние ренальной гемодинамики и ее коррекция при дирофиляриозе у собак",
     "description": "",
-    "url": "content/view/376"
+    "url": "content/view/376",
+    "catid": "46"
   },
   {
     "id": "380",
     "title": "Ультразвуковое исследование лимфатических узлов брюшной полости",
     "description": "",
-    "url": "content/view/380"
+    "url": "content/view/380",
+    "catid": "46"
   },
   {
     "id": "381",
     "title": "Опухоли желудочно-кишечного тракта у кошек и собак",
     "description": "",
-    "url": "content/view/381"
+    "url": "content/view/381",
+    "catid": "46"
   },
   {
     "id": "383",
     "title": "Увеит у собак и кошек. Клинические признаки, диагностика и лечение увеитов",
     "description": "",
-    "url": "content/view/383"
+    "url": "content/view/383",
+    "catid": "46"
   },
   {
     "id": "385",
     "title": "Уход за старыми животными, возрастные изменения в организме пожилых животных, кормление старой собаки и кошки",
     "description": "",
-    "url": "content/view/385"
+    "url": "content/view/385",
+    "catid": "46"
   },
   {
     "id": "389",
     "title": "Управление репутацией ветеринарной клиники",
     "description": "",
-    "url": "content/view/389"
+    "url": "content/view/389",
+    "catid": "46"
   },
   {
     "id": "390",
     "title": "Уремия (уремический синдром) у кошек",
     "description": "",
-    "url": "content/view/390"
+    "url": "content/view/390",
+    "catid": "46"
   },
   {
     "id": "40",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/40"
+    "url": "content/view/40",
+    "catid": "46"
   },
   {
     "id": "42",
     "title": "Об отмене норм проектирования ветеринарных объектов для городов",
     "description": "",
-    "url": "content/view/42"
+    "url": "content/view/42",
+    "catid": "46"
   },
   {
     "id": "43",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/43"
+    "url": "content/view/43",
+    "catid": "63"
   },
   {
     "id": "44",
     "title": "Применение иммуномодуляторов при паразитарных инвазиях",
     "description": "",
-    "url": "content/view/44"
+    "url": "content/view/44",
+    "catid": "63"
   },
   {
     "id": "45",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/45"
+    "url": "content/view/45",
+    "catid": "63"
   },
   {
     "id": "47",
     "title": "Аллергия и пишевая непереносимость. Схожие симптомы, разные болезни",
     "description": "",
-    "url": "content/view/47"
+    "url": "content/view/47",
+    "catid": "63"
   },
   {
     "id": "48",
     "title": "Дисплазия тазобедренных суставов (ДТБС)",
     "description": "",
-    "url": "content/view/48"
+    "url": "content/view/48",
+    "catid": "63"
   },
   {
     "id": "50",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/50"
+    "url": "content/view/50",
+    "catid": "63"
   },
   {
     "id": "53",
     "title": "Лечение взрослой формы демодекоза у собак",
     "description": "",
-    "url": "content/view/53"
+    "url": "content/view/53",
+    "catid": "63"
   },
   {
     "id": "54",
     "title": "Демодекоз собак. Резистентные к терапии и рецидивирующие случаи демодекоза",
     "description": "",
-    "url": "content/view/54"
+    "url": "content/view/54",
+    "catid": "63"
   },
   {
     "id": "56",
     "title": "Диагностика в гастроэнтерологии",
     "description": "",
-    "url": "content/view/56"
+    "url": "content/view/56",
+    "catid": "63"
   },
   {
     "id": "58",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/58"
+    "url": "content/view/58",
+    "catid": "46"
   },
   {
     "id": "59",
     "title": "Дермоидная киста языка у собаки",
     "description": "",
-    "url": "content/view/59"
+    "url": "content/view/59",
+    "catid": "63"
   },
   {
     "id": "61",
     "title": "Иммунодефициты собак",
     "description": "",
-    "url": "content/view/61"
+    "url": "content/view/61",
+    "catid": "63"
   },
   {
     "id": "65",
     "title": "Морфологические варианты нефролитиаза домашних котов",
     "description": "",
-    "url": "content/view/65"
+    "url": "content/view/65",
+    "catid": "63"
   },
   {
     "id": "66",
     "title": "Терапия при обострениях артритов у пожилых кошек и собак",
     "description": "",
-    "url": "content/view/66"
+    "url": "content/view/66",
+    "catid": "63"
   },
   {
     "id": "67",
     "title": "Вирусный энтерит норок",
     "description": "",
-    "url": "content/view/67"
+    "url": "content/view/67",
+    "catid": "63"
   },
   {
     "id": "69",
     "title": "Дермикоцид в терапии дерматомикозов мелких домашних животных",
     "description": "",
-    "url": "content/view/69"
+    "url": "content/view/69",
+    "catid": "63"
   },
   {
     "id": "70",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/70"
+    "url": "content/view/70",
+    "catid": "46"
   },
   {
     "id": "73",
@@ -591,25 +683,29 @@
     "id": "74",
     "title": "Особенности некоторых энзимобиохимических реакций после остеосинтеза трубчатых костей у собак",
     "description": "",
-    "url": "content/view/74"
+    "url": "content/view/74",
+    "catid": "63"
   },
   {
     "id": "75",
     "title": "Уход за опухолевой язвой",
     "description": "",
-    "url": "content/view/75"
+    "url": "content/view/75",
+    "catid": "63"
   },
   {
     "id": "76",
     "title": "Лечение дерматологических заболеваний у животных",
     "description": "",
-    "url": "content/view/76"
+    "url": "content/view/76",
+    "catid": "46"
   },
   {
     "id": "78",
     "title": "Имидосан – шаг вперед в борьбе с пироплазмозом",
     "description": "",
-    "url": "content/view/78"
+    "url": "content/view/78",
+    "catid": "63"
   },
   {
     "id": "8",
@@ -621,43 +717,50 @@
     "id": "83",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/83"
+    "url": "content/view/83",
+    "catid": "46"
   },
   {
     "id": "84",
     "title": "Клуб ветеринарных врачей  - Добавлена возможность загрузки фотографий",
     "description": "",
-    "url": "content/view/84"
+    "url": "content/view/84",
+    "catid": "68"
   },
   {
     "id": "85",
     "title": "Использование биохимического анализа крови в постановке диагноза",
     "description": "",
-    "url": "content/view/85"
+    "url": "content/view/85",
+    "catid": "73"
   },
   {
     "id": "86",
     "title": "Опыт применения перевязочного материала «Воскопран» для местного лечения трофических язв у собак",
     "description": "",
-    "url": "content/view/86"
+    "url": "content/view/86",
+    "catid": "63"
   },
   {
     "id": "87",
     "title": "Моксидектин. Преимущества использования и профилактика осложнений",
     "description": "",
-    "url": "content/view/87"
+    "url": "content/view/87",
+    "catid": "63"
   },
   {
     "id": "88",
     "title": "Трансплантация почек у кошки",
     "description": "",
-    "url": "content/view/88"
+    "url": "content/view/88",
+    "catid": "63"
   },
   {
     "id": "90",
     "title": "Нарушения пигментации шерсти у собак",
     "description": "",
-    "url": "content/view/90"
+    "url": "content/view/90",
+    "catid": "46"
   },
   {
     "id": "92",
@@ -669,42 +772,49 @@
     "id": "93",
     "title": "Эффективность топикального применения",
     "description": "",
-    "url": "content/view/93"
+    "url": "content/view/93",
+    "catid": "63"
   },
   {
     "id": "94",
     "title": "Клинические испытания глазных капель «Ветомитин» при ретинопатиях у домашних животных",
     "description": "",
-    "url": "content/view/94"
+    "url": "content/view/94",
+    "catid": "63"
   },
   {
     "id": "95",
     "title": "Клуб ветеринарных врачей  - Offline",
     "description": "",
-    "url": "content/view/95"
+    "url": "content/view/95",
+    "catid": "63"
   },
   {
     "id": "96",
     "title": "Динамика изменения внутриглазного давления при экзогенных и эндогенных увеитах собак при различных типах воспаления, и её прогностическая значимость",
     "description": "",
-    "url": "content/view/96"
+    "url": "content/view/96",
+    "catid": "63"
   },
   {
     "id": "97",
     "title": "Лечение контузионных увеитов собак",
     "description": "",
-    "url": "content/view/97"
+    "url": "content/view/97",
+    "catid": "63"
   },
   {
     "id": "98",
     "title": "Диагностика и лечение экзогенных и эндогенных увеитов собак",
     "description": "",
-    "url": "content/view/98"
+    "url": "content/view/98",
+    "catid": "63"
   },
   {
     "id": "99",
     "title": "Патогенетические особенности течения иридоциклитов, развивающихся на фоне глубоких язв роговицы",
     "description": "",
-    "url": "content/view/99"
+    "url": "content/view/99",
+    "catid": "63"
   }
 ]
