@@ -4,6 +4,6 @@
   "metaTitle": "Добавлена возможность загрузки фотографий",
   "description": "",
   "keywords": "",
-  "content": "\n                <tbody><tr>\n                  <td class=\"contentheading\" width=\"100%\">\n                    <h1>Добавлена возможность загрузки фотографий</h1>\n                  </td>\n                  <td align=\"right\" width=\"100%\" class=\"buttonheading\">\n                    <a href=\"/index2.php?option=com_content&amp;task=view&amp;id=84&amp;pop=1&amp;page=0\" target=\"_blank\" onclick=\"window.open('http://vetclub.ru/index2.php?option=com_content&amp;task=view&amp;id=84&amp;pop=1&amp;page=0','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;\" title=\"Версия для печати\"><img src=\"/templates/rt_pixel/images/printButton.png\" alt=\"Версия для печати\" name=\"Версия для печати\" align=\"middle\" border=\"0\"></a>\n                  </td>\n                </tr>\n              </tbody>",
+  "content": "<p>Добавлена возможность загрузки личных фотографий в профиль пользователя. Каждый пользователь может загрузить до 10 фото размером до 1 Мб.</p> <p>Функция может быть удобна для загрузки примеров, фотографий операций и т.п. </ p></p>",
   "url": "content/view/84"
 }

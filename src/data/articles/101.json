@@ -4,6 +4,6 @@
   "metaTitle": "Консультации ветеринарных врачей",
   "description": "",
   "keywords": "",
-  "content": "\n                <tbody><tr>\n                  <td class=\"contentheading\" width=\"100%\">\n                    <h1>Консультации ветеринарных врачей</h1>\n                  </td>\n                  <td align=\"right\" width=\"100%\" class=\"buttonheading\">\n                    <a href=\"/index2.php?option=com_content&amp;task=view&amp;id=101&amp;pop=1&amp;page=0\" target=\"_blank\" onclick=\"window.open('http://vetclub.ru/index2.php?option=com_content&amp;task=view&amp;id=101&amp;pop=1&amp;page=0','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;\" title=\"Версия для печати\"><img src=\"/templates/rt_pixel/images/printButton.png\" alt=\"Версия для печати\" name=\"Версия для печати\" align=\"middle\" border=\"0\"></a>\n                  </td>\n                </tr>\n              </tbody>",
+  "content": "<table cellspacing=\"5\" cellpadding=\"5\" border=\"0\" width=\"100%\"> <tbody> <tr> <td> <a href=\"/content/view/101/1/\"></a> </td> <td> <p>Уважаемые коллеги!<br/> Портал о ветеринарии \"\" приглашает к сотрудничеству ветеринарных врачей, имеющих искреннее желание помогать людям в лечении их питомцев.</p>",
   "url": "content/view/101"
 }
