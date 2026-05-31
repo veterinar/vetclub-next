@@ -3,8 +3,6 @@
  * Server Component (no 'use client')
  */
 
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import {
   LayoutDashboard,
@@ -91,14 +89,6 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Check auth on server side
-  const cookieStore = await cookies();
-  const adminToken = cookieStore.get('admin_token')?.value;
-
-  if (!adminToken) {
-    redirect('/admin/login');
-  }
-
   return (
     <div className="flex min-h-screen bg-gray-50">
       <AdminSidebar />

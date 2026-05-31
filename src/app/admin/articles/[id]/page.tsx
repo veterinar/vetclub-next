@@ -4,6 +4,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { requireAuth } from '@/lib/admin-auth';
 import ArticleEditor from './ArticleEditor';
 
 interface Article {
@@ -33,6 +34,7 @@ export default async function EditArticlePage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  await requireAuth();
   const { id } = await params;
   const isNew = id === 'new';
   const article = isNew ? null : loadArticle(id);

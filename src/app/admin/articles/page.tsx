@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import { requireAuth } from '@/lib/admin-auth';
 import {
   FileText,
   PlusCircle,
@@ -42,7 +43,8 @@ function loadArticles(): Article[] {
     .sort((a, b) => parseInt(b.id) - parseInt(a.id));
 }
 
-export default function ArticlesPage() {
+export default async function ArticlesPage() {
+  await requireAuth();
   const articles = loadArticles();
 
   return (

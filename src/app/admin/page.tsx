@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import { requireAuth } from '@/lib/admin-auth';
 import {
   FileText,
   FolderOpen,
@@ -45,7 +46,8 @@ function getCategories(articles: Article[]): string[] {
   return Array.from(cats);
 }
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  await requireAuth();
   const articles = loadArticles();
   const categories = getCategories(articles);
 
