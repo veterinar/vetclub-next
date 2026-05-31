@@ -36,6 +36,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.title,
     description: article.description || article.title,
+    keywords: article.keywords || '',
+    openGraph: {
+      title: article.title,
+      description: article.description || article.title,
+      type: 'article',
+      locale: 'ru_RU',
+    },
   };
 }
 

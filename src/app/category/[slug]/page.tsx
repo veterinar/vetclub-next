@@ -3,6 +3,7 @@ import allArticles from '@/data/articles.json';
 import slugMapData from '@/data/slug-map.json';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 const { slugMap } = slugMapData as { slugMap: Record<string, string> };
 
@@ -12,6 +13,26 @@ interface Props {
 
 export async function generateStaticParams() {
   return categoriesData.map((cat) => ({ slug: cat.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const category = categoriesData.find((c) => c.slug === slug);
+  
+  if (!category) {
+    return { title: 'Не найдено' };
+  }
+  
+  return {
+    title: `${category.name} — VetClub.ru`,
+    description: category.description || `${category.name} — статьи по ветеринарии`,
+    openGraph: {
+      title: `${category.name} — VetClub.ru`,
+      description: category.description || `${category.name} — статьи по ветеринарии`,
+      type: 'website',
+      locale: 'ru_RU',
+    },
+  };
 }
 
 export default async function CategoryPage({ params }: Props) {

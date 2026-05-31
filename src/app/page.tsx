@@ -2,6 +2,7 @@ import articlesData from '@/data/index.json';
 import slugMapData from '@/data/slug-map.json';
 import Link from 'next/link';
 import SearchBox from './SearchBox';
+import { Metadata } from 'next';
 
 const { slugMap } = slugMapData as { slugMap: Record<string, string> };
 
@@ -34,6 +35,17 @@ function getCategory(title: string): string {
   if (t.includes('препарат') || t.includes('лекарств') || t.includes('вакцин') || t.includes('моксидектин')) return 'Фармакология';
   return 'Терапия';
 }
+
+export const metadata: Metadata = {
+  title: 'VetClub.ru — Ветеринария для профессионалов',
+  description: 'Справочная информация для ветврача. 118 статей по ветеринарной терапии, хирургии, дерматологии, офтальмологии, диагностике.',
+  openGraph: {
+    title: 'VetClub.ru — Ветеринария для профессионалов',
+    description: 'Справочная информация для ветврача. 118 статей по ветеринарии.',
+    type: 'website',
+    locale: 'ru_RU',
+  },
+};
 
 export default function HomePage() {
   const articles: ArticleIndex[] = articlesData;
