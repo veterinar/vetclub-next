@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
-const { slugMap } = slugMapData as { slugMap: Record<string, string> };
+const { slugMap, idMap } = slugMapData as { slugMap: Record<string, string>; idMap: Record<string, string> };
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -57,7 +57,7 @@ export default async function CategoryPage({ params }: Props) {
         {articles.map((article) => (
           <Link
             key={article.id}
-            href={`/articles/${slugMap[article.id]}/`}
+            href={`/articles/${idMap[article.id]}/`}
             className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-[#81c784] hover:shadow-sm transition-all"
           >
             <h2 className="font-semibold text-[#1b5e20]">{article.title}</h2>

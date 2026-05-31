@@ -4,7 +4,7 @@ import Link from 'next/link';
 import SearchBox from './SearchBox';
 import { Metadata } from 'next';
 
-const { slugMap } = slugMapData as { slugMap: Record<string, string> };
+const { slugMap, idMap } = slugMapData as { slugMap: Record<string, string>; idMap: Record<string, string> };
 
 interface ArticleIndex {
   id: string;
@@ -99,7 +99,7 @@ export default function HomePage() {
           return (
             <Link
               key={article.id}
-              href={`/articles/${slugMap[article.id]}/`}
+              href={`/articles/${idMap[article.id]}/`}
               className="group block bg-white p-5 rounded-xl border border-gray-200 hover:border-[#81c784] hover:shadow-md transition-all"
             >
               <div className="flex items-start gap-4"

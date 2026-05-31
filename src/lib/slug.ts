@@ -26,7 +26,7 @@ export function slugify(text: string): string {
     .slice(0, 100);
 }
 
-export function createSlug(title: string, id: string): string {
+export function createSlug(title: string, _id: string): string {
   const baseSlug = slugify(title);
-  return baseSlug ? `${baseSlug}-${id}` : id;
+  return baseSlug || _id;
 }

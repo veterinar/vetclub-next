@@ -16,7 +16,7 @@ export default async function CatchAllPage({ params }: Props) {
   const articleMatch = fullPath.match(/^\/content\/view\/(\d+)\/\d+\/?$/);
   if (articleMatch) {
     const id = articleMatch[1];
-    const slug = slugMap[id];
+    const slug = idMap[id];
     if (slug) {
       redirect(`/articles/${slug}/`);
     }
@@ -26,7 +26,7 @@ export default async function CatchAllPage({ params }: Props) {
   const oldArticleMatch = fullPath.match(/^\/article\/(\d+)\/?$/);
   if (oldArticleMatch) {
     const id = oldArticleMatch[1];
-    const slug = slugMap[id];
+    const slug = idMap[id];
     if (slug) {
       redirect(`/articles/${slug}/`);
     }

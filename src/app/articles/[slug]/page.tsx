@@ -18,15 +18,15 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-const { slugMap, idMap } = slugMapData as { slugMap: Record<string, string>; idMap: Record<string, string> };
+const { slugMap } = slugMapData as { slugMap: Record<string, string> };
 
 export async function generateStaticParams() {
-  return Object.values(slugMap).map((slug) => ({ slug }));
+  return Object.keys(slugMap).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const id = idMap[slug];
+  const id = slugMap[slug];
   const article = id ? (allArticles as Record<string, Article>)[id] : null;
   
   if (!article) {
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
-  const id = idMap[slug];
+  const id = slugMap[slug];
   const article = id ? (allArticles as Record<string, Article>)[id] : null;
 
   if (!article) {

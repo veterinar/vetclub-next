@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   const indexPath = path.join(process.cwd(), 'data', 'index.json');
   const slugMapPath = path.join(process.cwd(), 'data', 'slug-map.json');
   const articles = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
-  const { slugMap } = JSON.parse(fs.readFileSync(slugMapPath, 'utf-8'));
+  const { idMap } = JSON.parse(fs.readFileSync(slugMapPath, 'utf-8'));
   
   const results = articles
     .filter((a: { title: string; description?: string }) => 
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     )
     .map((a: { id: string; title: string; description?: string }) => ({
       ...a,
-      slug: slugMap[a.id] || a.id,
+      slug: idMap[a.id] || a.id,
     }));
   
   return NextResponse.json({ results });

@@ -63,9 +63,9 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               <aside className="lg:col-span-3 hidden lg:block">
-                <div className="bg-white rounded-xl border border-gray-200 p-4 sticky top-24">
+                <div className="bg-white rounded-xl border border-gray-200 p-4 sticky top-24 overflow-y-auto max-h-[calc(100vh-8rem)]">
                   <div className="text-sm text-gray-500 mb-4 pb-2 border-b border-gray-100">
-                    118 статей
+                    108 статей
                   </div>
                   <nav className="space-y-1">
                     {allMenuItems.map((item) => (
