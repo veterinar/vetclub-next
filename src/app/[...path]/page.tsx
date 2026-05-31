@@ -49,9 +49,6 @@ export default async function CatchAllPage({ params }: Props) {
   if (fullPath.startsWith('/component/option,com_fireboard')) {
     redirect('/forum/');
   }
-  if (fullPath.startsWith('/component/option,com_myblog')) {
-    redirect('/blogs/');
-  }
   if (fullPath.startsWith('/component/option,com_neorecruit')) {
     redirect('/jobs/');
   }
@@ -69,9 +66,6 @@ export default async function CatchAllPage({ params }: Props) {
   }
 
   // Static page redirects
-  if (fullPath === '/content/view/41/61/' || fullPath === '/content/view/41/61') {
-    redirect('/about/');
-  }
   if (fullPath === '/content/view/64/76/' || fullPath === '/content/view/64/76') {
     redirect('/clinics/');
   }

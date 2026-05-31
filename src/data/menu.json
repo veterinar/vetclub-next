@@ -1,16 +1,13 @@
 {
   "top": [
     { "name": "Главная", "href": "/" },
-    { "name": "О проекте", "href": "/about/" },
     { "name": "Ветеринарные клиники и врачи", "href": "/clinics/" },
-    { "name": "Блоги", "href": "/blogs/" },
     { "name": "Связаться с администратором", "href": "/contact/" },
     { "name": "Поиск по сайту", "href": "/search/" }
   ],
   "left": [
     { "name": "Главная", "href": "/" },
     { "name": "Работа для ветврачей", "href": "/jobs/" },
-    { "name": "Новости ветеринарии", "href": "/category/news/" },
     { "name": "Образование", "href": "/category/education/" },
     { "name": "Ссылки. Обмен ссылками", "href": "/partners/" }
   ],
