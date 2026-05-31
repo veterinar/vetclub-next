@@ -3,7 +3,7 @@
  * Runs server-side to create a searchable JSON index
  */
 
-import { MiniSearch } from 'minisearch';
+import MiniSearch from 'minisearch';
 import fs from 'fs';
 import path from 'path';
 import { JSDOM } from 'jsdom';
