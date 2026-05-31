@@ -1,20 +1,37 @@
+/**
+ * Article API — GET / POST / DELETE
+ * Node.js runtime for filesystem access
+ */
+
+export const runtime = 'nodejs';
+
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+const articlesDir = path.join(process.cwd(), 'src', 'data', 'articles');
+
+function getArticlePath(id: string): string {
+  return path.join(articlesDir, `${id}.json`);
+}
+
 export async function GET(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params;
-  const filePath = path.join(process.cwd(), 'data', 'articles', `${id}.json`);
-  
-  if (!fs.existsSync(filePath)) {
-    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  try {
+    const { id } = await params;
+    const filePath = getArticlePath(id);
+
+    if (!fs.existsSync(filePath)) {
+      return NextResponse.json({ error: 'Article not found' }, { status: 404 });
+    }
+
+    const article = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    return NextResponse.json({ article });
+  } catch {
+    return NextResponse.json({ error: 'Failed to load article' }, { status: 500 });
   }
-  
-  const article = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  return NextResponse.json({ article });
 }
 
 export async function POST(
@@ -24,14 +41,36 @@ export async function POST(
   try {
     const { id } = await params;
     const article = await request.json();
-    
-    const articlesDir = path.join(process.cwd(), 'data', 'articles');
-    const filePath = path.join(articlesDir, `${id}.json`);
-    
+
+    // Ensure directory exists
+    if (!fs.existsSync(articlesDir)) {
+      fs.mkdirSync(articlesDir, { recursive: true });
+    }
+
+    const filePath = getArticlePath(id);
     fs.writeFileSync(filePath, JSON.stringify(article, null, 2), 'utf-8');
-    
+
+    return NextResponse.json({ success: true, id });
+  } catch {
+    return NextResponse.json({ error: 'Failed to save article' }, { status: 500 });
+  }
+}
+
+export async function DELETE(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params;
+    const filePath = getArticlePath(id);
+
+    if (!fs.existsSync(filePath)) {
+      return NextResponse.json({ error: 'Article not found' }, { status: 404 });
+    }
+
+    fs.unlinkSync(filePath);
     return NextResponse.json({ success: true });
   } catch {
-    return NextResponse.json({ error: 'Failed to save' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to delete article' }, { status: 500 });
   }
 }
