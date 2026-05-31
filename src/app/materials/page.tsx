@@ -82,7 +82,7 @@ export default function MaterialsPage() {
 
       {/* Ветеринарные материалы */}
       <div className="mb-10">
-        <h2 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Ветеринарные материалы</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Ветеринарные материалы</h2>
         <div className="grid gap-6">
           {materialsGroup.map(renderCategory)}
         </div>
@@ -91,7 +91,7 @@ export default function MaterialsPage() {
       {/* Справочник */}
       {referenceGroup.length > 0 && (
         <div className="mb-10">
-          <h2 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Справочник</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Справочник</h2>
           <div className="grid gap-6">
             {referenceGroup.map(renderCategory)}
           </div>
@@ -101,7 +101,7 @@ export default function MaterialsPage() {
       {/* Руководства */}
       {guidesGroup.length > 0 && (
         <div>
-          <h2 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Руководства</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Руководства</h2>
           <div className="grid gap-4">
             {guidesGroup.map((category) => (
               <Link
