@@ -23,36 +23,36 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const allMenuItems = [
+    ...menuData.top,
+    ...menuData.left,
+    ...menuData.materials,
+    ...menuData.reference,
+  ];
+
   return (
     <html lang="ru">
       <body className={inter.className}>
         <div className="min-h-screen bg-[#fafafa]">
-          <header className="bg-white border-b border-gray-200 sticky top-0 z-50"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6"
-            >
-              <div className="flex items-center justify-between h-16"
-              >
-                <Link href="/" className="flex items-center gap-2"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-[#2e7d32] flex items-center justify-center"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    >
+          <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <div className="flex items-center justify-between h-16">
+                <Link href="/" className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-[#2e7d32] flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </div>
                   <span className="text-xl font-bold text-[#1b5e20] tracking-tight">VetClub.ru</span>
                 </Link>
-                <nav className="hidden md:flex items-center gap-6"
-                >
-                  {menuData.map((item) => (
+                <nav className="hidden md:flex items-center gap-6">
+                  {menuData.top.map((item) => (
                     <Link
-                      key={item.url}
-                      href={item.url}
+                      key={item.href}
+                      href={item.href}
                       className="text-sm text-gray-600 hover:text-[#2e7d32] transition-colors"
                     >
-                      {item.title}
+                      {item.name}
                     </Link>
                   ))}
                 </nav>
@@ -60,52 +60,39 @@ export default function RootLayout({
             </div>
           </header>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8"
-            >
-              <aside className="lg:col-span-3 hidden lg:block"
-              >
-                <div className="bg-white rounded-xl border border-gray-200 p-4 sticky top-24"
-                >
-                  <div className="text-sm text-gray-500 mb-4 pb-2 border-b border-gray-100"
-                  >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <aside className="lg:col-span-3 hidden lg:block">
+                <div className="bg-white rounded-xl border border-gray-200 p-4 sticky top-24">
+                  <div className="text-sm text-gray-500 mb-4 pb-2 border-b border-gray-100">
                     118 статей
                   </div>
-                  <nav className="space-y-1"
-                  >
-                    {menuData.map((item) => (
+                  <nav className="space-y-1">
+                    {allMenuItems.map((item) => (
                       <Link
-                        key={item.url}
-                        href={item.url}
+                        key={item.href}
+                        href={item.href}
                         className="block px-3 py-2 text-sm rounded-lg text-gray-600 hover:bg-[#f1f8e9] hover:text-[#1b5e20] transition-colors"
                       >
-                        {item.title}
+                        {item.name}
                       </Link>
                     ))}
                   </nav>
                 </div>
               </aside>
 
-              <main className="lg:col-span-9"
-              >
+              <main className="lg:col-span-9">
                 {children}
               </main>
             </div>
           </div>
 
-          <footer className="bg-white border-t border-gray-200 mt-12"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8"
-            >
-              <div className="flex items-center justify-between"
-              >
-                <div className="flex items-center gap-2"
-                >
-                  <div className="w-6 h-6 rounded bg-[#2e7d32] flex items-center justify-center"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    >
+          <footer className="bg-white border-t border-gray-200 mt-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded bg-[#2e7d32] flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </div>
