@@ -4,9 +4,9 @@ import path from 'path';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  const { id } = await params;
   const filePath = path.join(process.cwd(), 'data', 'articles', `${id}.json`);
   
   if (!fs.existsSync(filePath)) {
@@ -19,10 +19,10 @@ export async function GET(
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const article = await request.json();
     
     const articlesDir = path.join(process.cwd(), 'data', 'articles');
