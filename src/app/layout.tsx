@@ -58,7 +58,7 @@ export default function RootLayout({
               <aside className="lg:col-span-3 hidden lg:block">
                 <div className="bg-white rounded-xl border border-gray-200 p-4 sticky top-24 overflow-y-auto max-h-[calc(100vh-8rem)]">
                   <div className="text-sm text-gray-500 mb-4 pb-2 border-b border-gray-100">
-                    108 статей
+                    121 статья
                   </div>
                   <nav className="space-y-1">
                     <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3">

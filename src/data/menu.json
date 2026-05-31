@@ -7,6 +7,7 @@
   ],
   "left": [
     { "name": "Главная", "href": "/" },
+    { "name": "Ветеринарные материалы", "href": "/materials/" },
     { "name": "Работа для ветврачей", "href": "/jobs/" },
     { "name": "Образование", "href": "/category/education/" },
     { "name": "Ссылки. Обмен ссылками", "href": "/partners/" }
