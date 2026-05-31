@@ -113,7 +113,7 @@ export default function RootLayout({
                 <span className="font-semibold text-gray-700">VetClub.ru</span>
               </div>
               <p className="text-sm text-gray-500">
-                Клуб ветеринарных врачей — справочная информация, обмен опытом, профессиональное сообщество
+                VetClub — статьи и справочная информация.
               </p>
               <div className="flex gap-4 text-sm text-gray-500">
                 <span>© 2008–2026</span>

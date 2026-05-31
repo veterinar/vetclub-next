@@ -1,7 +1,10 @@
 import categoriesData from '@/data/categories.json';
-import articlesData from '@/data/index.json';
+import allArticles from '@/data/articles.json';
+import slugMapData from '@/data/slug-map.json';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+
+const { slugMap } = slugMapData as { slugMap: Record<string, string> };
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -19,7 +22,7 @@ export default async function CategoryPage({ params }: Props) {
     notFound();
   }
 
-  const articles = articlesData.filter((a) => category.articles.includes(a.id));
+  const articles = category.articles.map(id => (allArticles as Record<string, any>)[id]).filter(Boolean);
 
   return (
     <div>
@@ -33,7 +36,7 @@ export default async function CategoryPage({ params }: Props) {
         {articles.map((article) => (
           <Link
             key={article.id}
-            href={`/article/${article.id}/`}
+            href={`/articles/${slugMap[article.id]}/`}
             className="block bg-white p-4 rounded-xl border border-gray-200 hover:border-[#81c784] hover:shadow-sm transition-all"
           >
             <h2 className="font-semibold text-[#1b5e20]">{article.title}</h2>

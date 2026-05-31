@@ -7,6 +7,7 @@ interface SearchResult {
   id: string;
   title: string;
   description?: string;
+  slug: string;
 }
 
 export default function SearchBox() {
@@ -63,7 +64,7 @@ export default function SearchBox() {
           {results.map((r) => (
             <Link
               key={r.id}
-              href={`/content/view/${r.id}/1/`}
+              href={`/articles/${r.slug}/`}
               className="block p-4 border-b border-gray-50 last:border-0 hover:bg-[#f1f8e9] transition-colors"
               onClick={() => setOpen(false)}
             >

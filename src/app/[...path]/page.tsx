@@ -1,5 +1,8 @@
 import { notFound, redirect } from 'next/navigation';
 import categoriesData from '@/data/categories.json';
+import slugMapData from '@/data/slug-map.json';
+
+const { slugMap, idMap } = slugMapData as { slugMap: Record<string, string>; idMap: Record<string, string> };
 
 interface Props {
   params: Promise<{ path: string[] }>;
@@ -9,10 +12,24 @@ export default async function CatchAllPage({ params }: Props) {
   const { path } = await params;
   const fullPath = '/' + path.join('/');
 
-  // Article redirect: /content/view/:id/:catid/ → /article/:id/
+  // Legacy article redirect: /content/view/:id/:catid/ → /articles/:slug/
   const articleMatch = fullPath.match(/^\/content\/view\/(\d+)\/\d+\/?$/);
   if (articleMatch) {
-    redirect(`/article/${articleMatch[1]}/`);
+    const id = articleMatch[1];
+    const slug = slugMap[id];
+    if (slug) {
+      redirect(`/articles/${slug}/`);
+    }
+  }
+
+  // Legacy article redirect: /article/:id/ → /articles/:slug/
+  const oldArticleMatch = fullPath.match(/^\/article\/(\d+)\/?$/);
+  if (oldArticleMatch) {
+    const id = oldArticleMatch[1];
+    const slug = slugMap[id];
+    if (slug) {
+      redirect(`/articles/${slug}/`);
+    }
   }
 
   // Category redirect: /content/category/:any/:any/:catid/ → /category/:slug/
