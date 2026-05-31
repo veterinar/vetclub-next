@@ -41,7 +41,7 @@ function loadArticles(): Article[] {
 }
 
 function getCategories(articles: Article[]): string[] {
-  const cats = new Set(articles.map(a => a.category).filter(Boolean));
+  const cats = new Set(articles.map(a => a.category).filter((c): c is string => !!c));
   return Array.from(cats);
 }
 
