@@ -61,7 +61,7 @@ export default function RootLayout({
                     121 статья
                   </div>
                   <nav className="space-y-1">
-                    <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3">
+                    <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 px-3">
                       Навигация
                     </div>
                     {menuData.left.map((item) => (
@@ -73,7 +73,7 @@ export default function RootLayout({
                         {item.name}
                       </Link>
                     ))}
-                    <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-4 px-3">
+                    <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 mt-4 px-3">
                       Материалы
                     </div>
                     {menuData.materials.map((item) => (
@@ -85,7 +85,7 @@ export default function RootLayout({
                         {item.name}
                       </Link>
                     ))}
-                    <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-4 px-3">
+                    <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 mt-4 px-3">
                       Справочник
                     </div>
                     {menuData.reference.map((item) => (
@@ -99,7 +99,7 @@ export default function RootLayout({
                     ))}
                     {menuData.guides.length > 0 && (
                       <>
-                        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-4 px-3">
+                        <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 mt-4 px-3">
                           Руководства
                         </div>
                         {menuData.guides.map((item) => (
