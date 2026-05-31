@@ -1,15 +1,74 @@
-You are an expert in Frontend: React 19.2, Node.js 24. Styling: Tailwind CSS and Shadcn UI. PostgreSQL 18.4. Backend and Data: Supabase. Deployment: Vercel.
+# VetClub.ru — Cursor AI Rules
+# Frontend: React 19.2, Next.js 16 (App Router), Tailwind CSS, Shadcn UI
+# Backend/Data: Supabase, PostgreSQL
+# Deployment: Vercel
 
-RULES:
+## Stack
+- React 19.2
+- Next.js 16 — App Router ONLY (no Pages Router)
+- Node.js 24
+- Tailwind CSS v4 + Shadcn UI
+- PostgreSQL 18.4
+- Supabase (auth, database, storage)
+- Vercel (deployment, edge functions)
 
-- Always use functional components.
-- Use lucide-react for icons.
-- Prefer `npx shadcn@latest add` to install components.
-- Don't explain code unless asked, just write it.
-- Use 'use client' directive only for components that use hooks (useState, useEffect).
-- For data fetching, prefer Server Components.
-- Use Supabase SSR for authentication.
-- Use TypeScript for all code.
-- Use Next.js App Router only (no Pages Router).
-- Use modern React patterns: Server Components by default, Client Components only when necessary.
-- Follow the existing project structure in /root/.openclaw/workspace/vetclub-next.
+## RULES
+
+### Components
+- Always use functional components. No class components.
+- Use `'use client'` directive ONLY for components that use hooks (useState, useEffect, useRef, etc.).
+- Prefer Server Components by default — no `'use client'` if the component doesn't need client-side interactivity.
+- Use `lucide-react` for all icons. Never use other icon libraries.
+- Prefer `npx shadcn@latest add <component>` to install Shadcn UI components.
+
+### Data Fetching
+- Prefer Server Components for data fetching.
+- Use Supabase SSR package (`@supabase/ssr`) for authentication and server-side data access.
+- For client-side Supabase, use the browser client from `@supabase/supabase-js`.
+
+### Styling
+- Use Tailwind CSS utility classes exclusively. No inline styles, no CSS modules unless absolutely necessary.
+- Follow Shadcn UI design system and component patterns.
+- Use `cn()` utility (from `clsx` + `tailwind-merge`) for conditional classes.
+
+### Code Style
+- Write clean, concise code. Don't explain code unless explicitly asked.
+- Use TypeScript strict mode. Always type props and return values.
+- Prefer `async/await` over `.then/.catch`.
+- Use named exports for components: `export function ComponentName()`.
+
+### API & Backend
+- Use Next.js API Routes (`route.ts`) for server endpoints — App Router convention.
+- Always set `export const runtime = 'nodejs'` for routes that need filesystem/DB access.
+- Use Supabase RPC or direct table queries via Server Components where possible.
+
+### Files & Structure
+- Follow App Router structure: `app/page.tsx`, `app/layout.tsx`, `app/loading.tsx`, `app/error.tsx`.
+- Keep components in `src/components/` or co-located in `app/` segments.
+- Utilities go in `src/lib/`.
+
+### Performance
+- Use `React.lazy()` + `Suspense` for code splitting heavy components.
+- Prefer static generation (`generateStaticParams`) for pages that don't need dynamic data at request time.
+- Use `next/image` for all images with proper `width`/`height` and `alt` attributes.
+
+### Security
+- Never expose Supabase `service_role` key in frontend code.
+- Use Row Level Security (RLS) policies in Supabase.
+- Validate all user inputs on the server side.
+
+### Deployment
+- Vercel is the deployment target. Ensure `next.config.js` is compatible.
+- Use `vercel env` or dashboard for environment variables — never commit secrets.
+- Keep `package.json` engines field aligned with Node.js 24.
+
+### Search (Project Specific)
+- The project uses MiniSearch for client-side full-text search.
+- Search index is built at build time via `npm run build:search`.
+- Index is served as static file `/search-index.json`.
+- API Route `/api/search` serves as server-side fallback.
+
+## RESPONSE FORMAT
+- Output code only. No explanations unless asked.
+- Use TypeScript for all new files.
+- Follow existing project patterns and conventions.
