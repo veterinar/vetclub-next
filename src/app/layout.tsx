@@ -23,13 +23,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const allMenuItems = [
-    ...menuData.top,
-    ...menuData.left,
-    ...menuData.materials,
-    ...menuData.reference,
-  ];
-
   return (
     <html lang="ru">
       <body className={inter.className}>
@@ -68,7 +61,10 @@ export default function RootLayout({
                     108 статей
                   </div>
                   <nav className="space-y-1">
-                    {allMenuItems.map((item) => (
+                    <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3">
+                      Навигация
+                    </div>
+                    {menuData.left.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -77,6 +73,46 @@ export default function RootLayout({
                         {item.name}
                       </Link>
                     ))}
+                    <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-4 px-3">
+                      Материалы
+                    </div>
+                    {menuData.materials.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-3 py-2 text-sm rounded-lg text-gray-600 hover:bg-[#f1f8e9] hover:text-[#1b5e20] transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                    <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-4 px-3">
+                      Справочник
+                    </div>
+                    {menuData.reference.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-3 py-2 text-sm rounded-lg text-gray-600 hover:bg-[#f1f8e9] hover:text-[#1b5e20] transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                    {menuData.guides.length > 0 && (
+                      <>
+                        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-4 px-3">
+                          Руководства
+                        </div>
+                        {menuData.guides.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block px-3 py-2 text-sm rounded-lg text-gray-600 hover:bg-[#f1f8e9] hover:text-[#1b5e20] transition-colors"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </>
+                    )}
                   </nav>
                 </div>
               </aside>
