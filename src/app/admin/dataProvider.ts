@@ -10,6 +10,7 @@ const httpClient = (url: string, options: RequestInit = {}) => {
   });
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const dataProvider: DataProvider = {
   // Get list of articles
   getList: async (resource, params) => {
@@ -63,9 +64,9 @@ export const dataProvider: DataProvider = {
   },
 
   // Create new article
-  create: async (resource, params) => {
+  create: async (_resource, params) => {
     const id = params.data.id || Date.now().toString();
-    await httpClient(`${API_URL}/${resource}/${id}`, {
+    await httpClient(`${API_URL}/articles/${id}`, {
       method: 'POST',
       body: JSON.stringify(params.data),
     });
@@ -73,42 +74,42 @@ export const dataProvider: DataProvider = {
   },
 
   // Update article
-  update: async (resource, params) => {
-    const res = await httpClient(`${API_URL}/${resource}/${params.id}`, {
+  update: async (_resource, params) => {
+    await httpClient(`${API_URL}/articles/${params.id}`, {
       method: 'POST',
       body: JSON.stringify(params.data),
     });
-    return { data: params.data };
+    return { data: params.data as any };
   },
 
   // Update many
-  updateMany: async (resource, params) => {
+  updateMany: async (_resource, params) => {
     await Promise.all(
       params.ids.map((id) =>
-        httpClient(`${API_URL}/${resource}/${id}`, {
+        httpClient(`${API_URL}/articles/${id}`, {
           method: 'POST',
           body: JSON.stringify(params.data),
         })
       )
     );
-    return { data: params.ids };
+    return { data: params.ids as any };
   },
 
   // Delete article
-  delete: async (resource, params) => {
-    const res = await httpClient(`${API_URL}/${resource}/${params.id}`, {
+  delete: async (_resource, params) => {
+    await httpClient(`${API_URL}/articles/${params.id}`, {
       method: 'DELETE',
     });
-    return { data: { id: params.id } };
+    return { data: { id: params.id } as any };
   },
 
   // Delete many
-  deleteMany: async (resource, params) => {
+  deleteMany: async (_resource, params) => {
     await Promise.all(
       params.ids.map((id) =>
-        httpClient(`${API_URL}/${resource}/${id}`, { method: 'DELETE' })
+        httpClient(`${API_URL}/articles/${id}`, { method: 'DELETE' })
       )
     );
-    return { data: params.ids };
+    return { data: params.ids as any };
   },
 };
