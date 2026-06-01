@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VetClub Admin</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f5f5f5; }
+    
+    /* Login */
+    .login-screen {
+      height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #f0fdf4 0%, #e8f5e9 100%);
+    }
+    .login-box {
+      background: white; padding: 40px; border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08); width: 100%; max-width: 400px;
+    }
+    .login-box h1 { font-size: 24px; color: #1a1a1a; margin-bottom: 8px; }
+    .login-box p { color: #666; font-size: 14px; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px; }
+    .form-group input {
+      width: 100%; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px;
+      font-size: 14px; transition: border-color 0.2s;
+    }
+    .form-group input:focus { outline: none; border-color: #2e7d32; }
+    .btn {
+      width: 100%; padding: 12px; background: #2e7d32; color: white; border: none;
+      border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #1b5e20; }
+    .btn-secondary {
+      background: #f3f4f6; color: #374151; width: auto; padding: 8px 16px;
+    }
+    .btn-secondary:hover { background: #e5e7eb; }
+    .btn-danger { background: #dc2626; }
+    .btn-danger:hover { background: #b91c1c; }
+    .error { color: #dc2626; font-size: 14px; margin-top: 12px; }
+    
+    /* Admin */
+    .admin-layout { display: flex; min-height: 100vh; }
+    .sidebar {
+      width: 260px; background: white; border-right: 1px solid #e5e7eb;
+      display: flex; flex-direction: column;
+    }
+    .sidebar-header {
+      padding: 20px; border-bottom: 1px solid #e5e7eb;
+    }
+    .sidebar-header .logo { font-size: 20px; font-weight: 700; color: #2e7d32; }
+    .sidebar-header .badge {
+      display: inline-block; background: #f0fdf4; color: #2e7d32;
+      font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-left: 8px;
+    }
+    .sidebar-nav { flex: 1; padding: 12px; }
+    .nav-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      border-radius: 8px; color: #6b7280; text-decoration: none;
+      font-size: 14px; cursor: pointer; transition: all 0.15s;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: #f0fdf4; color: #2e7d32;
+    }
+    .sidebar-footer { padding: 12px; border-top: 1px solid #e5e7eb; }
+    
+    .main-content { flex: 1; overflow: auto; }
+    .top-bar {
+      background: white; border-bottom: 1px solid #e5e7eb;
+      padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-bar h2 { font-size: 20px; color: #111827; }
+    .content { padding: 24px; }
+    
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
+    .stat-card {
+      background: white; border-radius: 12px; padding: 20px;
+      border: 1px solid #e5e7eb;
+    }
+    .stat-card .label { font-size: 13px; color: #6b7280; margin-bottom: 8px; }
+    .stat-card .value { font-size: 28px; font-weight: 700; color: #111827; }
+    
+    /* Table */
+    .card {
+      background: white; border-radius: 12px; border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 16px 20px; border-bottom: 1px solid #e5e7eb;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .card-header h3 { font-size: 16px; color: #111827; }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      text-align: left; padding: 12px 20px; font-size: 12px; font-weight: 500;
+      color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;
+      background: #f9fafb;
+    }
+    td { padding: 14px 20px; font-size: 14px; border-bottom: 1px solid #f3f4f6; }
+    tr:hover { background: #f9fafb; }
+    .id-cell { font-family: monospace; color: #9ca3af; font-size: 13px; }
+    .title-cell { font-weight: 500; color: #111827; }
+    .desc-cell { color: #6b7280; font-size: 13px; margin-top: 2px; }
+    .tag {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      font-size: 12px; font-weight: 500; background: #f0fdf4; color: #2e7d32;
+    }
+    .actions { display: flex; gap: 8px; }
+    .actions button { font-size: 13px; padding: 6px 12px; border-radius: 6px; border: none; cursor: pointer; }
+    .btn-edit { background: #f0fdf4; color: #2e7d32; }
+    .btn-edit:hover { background: #dcfce7; }
+    .btn-delete { background: #fef2f2; color: #dc2626; }
+    .btn-delete:hover { background: #fee2e2; }
+    
+    /* Form */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-card {
+      background: white; border-radius: 12px; border: 1px solid #e5e7eb;
+      padding: 24px; margin-bottom: 20px;
+    }
+    .form-card h4 { font-size: 14px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+    textarea, input[type="text"] {
+      width: 100%; padding: 10px 14px; border: 1px solid #d1d5db;
+      border-radius: 8px; font-size: 14px; font-family: inherit;
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    textarea:focus, input:focus { outline: none; border-color: #2e7d32; }
+    .toolbar {
+      display: flex; gap: 4px; padding: 8px; background: #f9fafb;
+      border-bottom: 1px solid #e5e7eb; flex-wrap: wrap;
+    }
+    .toolbar button {
+      padding: 6px 10px; font-size: 13px; background: white; border: 1px solid #d1d5db;
+      border-radius: 6px; cursor: pointer; color: #374151;
+    }
+    .toolbar button:hover { background: #f0fdf4; color: #2e7d32; }
+    .editor textarea { border-radius: 0 0 8px 8px; border-top: none; min-height: 400px; font-family: monospace; }
+    
+    .hidden { display: none !important; }
+    .spinner {
+      width: 20px; height: 20px; border: 2px solid #e5e7eb;
+      border-top-color: #2e7d32; border-radius: 50%;
+      animation: spin 1s linear infinite; display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  
+  <script>
+    // ========== STATE ==========
+    let state = {
+      authenticated: false,
+      view: 'dashboard', // dashboard, articles, edit
+      articles: [],
+      editArticle: null,
+      loading: false,
+      error: ''
+    };
+    
+    const API = '/api/admin';
+    
+    // ========== AUTH ==========
+    async function login(username, password) {
+      const res = await fetch(`${API}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ login: username, password }),
+        credentials: 'include'
+      });
+      if (res.ok) {
+        state.authenticated = true;
+        state.error = '';
+        await loadArticles();
+        render();
+      } else {
+        const data = await res.json();
+        state.error = data.error || 'Неверный логин или пароль';
+        render();
+      }
+    }
+    
+    async function checkAuth() {
+      try {
+        const res = await fetch(`${API}/debug`, { credentials: 'include' });
+        const data = await res.json();
+        if (data.cookieMatch) {
+          state.authenticated = true;
+          await loadArticles();
+        }
+      } catch(e) {}
+      render();
+    }
+    
+    async function logout() {
+      await fetch(`${API}/logout`, { method: 'POST', credentials: 'include' });
+      state.authenticated = false;
+      state.view = 'dashboard';
+      render();
+    }
+    
+    // ========== DATA ==========
+    async function loadArticles() {
+      state.loading = true;
+      render();
+      try {
+        const res = await fetch(`${API}/articles`, { credentials: 'include' });
+        const data = await res.json();
+        state.articles = data.articles || [];
+      } catch(e) {
+        state.error = 'Ошибка загрузки статей';
+      }
+      state.loading = false;
+      render();
+    }
+    
+    async function loadArticle(id) {
+      try {
+        const res = await fetch(`${API}/articles/${id}`, { credentials: 'include' });
+        const data = await res.json();
+        return data.article;
+      } catch(e) { return null; }
+    }
+    
+    async function saveArticle(article) {
+      const id = article.id || Date.now().toString();
+      await fetch(`${API}/articles/${id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...article, id }),
+        credentials: 'include'
+      });
+      await loadArticles();
+      state.view = 'articles';
+      render();
+    }
+    
+    async function deleteArticle(id) {
+      if (!confirm('Удалить статью?')) return;
+      await fetch(`${API}/articles/${id}`, { method: 'DELETE', credentials: 'include' });
+      await loadArticles();
+      render();
+    }
+    
+    // ========== VIEWS ==========
+    function render() {
+      const app = document.getElementById('app');
+      if (!state.authenticated) {
+        app.innerHTML = renderLogin();
+        attachLoginListeners();
+      } else if (state.view === 'dashboard') {
+        app.innerHTML = renderLayout(renderDashboard());
+        attachNavListeners();
+      } else if (state.view === 'articles') {
+        app.innerHTML = renderLayout(renderArticles());
+        attachNavListeners();
+      } else if (state.view === 'edit') {
+        app.innerHTML = renderLayout(renderEditor());
+        attachNavListeners();
+        attachEditorListeners();
+      }
+    }
+    
+    function renderLogin() {
+      return `
+        <div class="login-screen">
+          <div class="login-box">
+            <h1>VetClub Admin</h1>
+            <p>Вход для администраторов</p>
+            <form id="loginForm">
+              <div class="form-group">
+                <label>Логин</label>
+                <input type="text" name="username" placeholder="admin" required autocomplete="username">
+              </div>
+              <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" name="password" placeholder="admin123" required autocomplete="current-password">
+              </div>
+              <button type="submit" class="btn">Войти</button>
+              ${state.error ? `<div class="error">${state.error}</div>` : ''}
+            </form>
+          </div>
+        </div>
+      `;
+    }
+    
+    function renderLayout(content) {
+      const categories = [...new Set(state.articles.map(a => a.category).filter(Boolean))];
+      return `
+        <div class="admin-layout">
+          <aside class="sidebar">
+            <div class="sidebar-header">
+              <span class="logo">VetClub</span>
+              <span class="badge">Админ</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a class="nav-item ${state.view === 'dashboard' ? 'active' : ''}" data-view="dashboard">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                Дашборд
+              </a>
+              <a class="nav-item ${state.view === 'articles' || state.view === 'edit' ? 'active' : ''}" data-view="articles">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Статьи (${state.articles.length})
+              </a>
+              <a class="nav-item" data-action="new">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                Новая статья
+              </a>
+            </nav>
+            <div class="sidebar-footer">
+              <a class="nav-item" data-action="logout">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                Выйти
+              </a>
+            </div>
+          </aside>
+          <div class="main-content">
+            ${content}
+          </div>
+        </div>
+      `;
+    }
+    
+    function renderDashboard() {
+      const categories = [...new Set(state.articles.map(a => a.category).filter(Boolean))];
+      return `
+        <div class="top-bar">
+          <h2>Дашборд</h2>
+          <button class="btn btn-secondary" data-action="new">+ Новая статья</button>
+        </div>
+        <div class="content">
+          <div class="stats-grid">
+            <div class="stat-card"><div class="label">Всего статей</div><div class="value">${state.articles.length}</div></div>
+            <div class="stat-card"><div class="label">Категорий</div><div class="value">${categories.length}</div></div>
+            <div class="stat-card"><div class="label">На сайте</div><div class="value">${state.articles.filter(a => a.slug).length}</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>Последние статьи</h3><a href="#" data-view="articles">Все статьи →</a></div>
+            <table>
+              <thead><tr><th>ID</th><th>Название</th><th>Категория</th></tr></thead>
+              <tbody>
+                ${state.articles.slice(-8).reverse().map(a => `
+                  <tr>
+                    <td class="id-cell">${a.id}</td>
+                    <td class="title-cell">${a.title}</td>
+                    <td>${a.category ? `<span class="tag">${a.category}</span>` : '—'}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+    
+    function renderArticles() {
+      if (state.loading) return '<div class="content"><div class="spinner"></div> Загрузка...</div>';
+      return `
+        <div class="top-bar">
+          <div><h2>Статьи</h2><p style="color:#6b7280;font-size:14px;margin-top:4px">Всего ${state.articles.length} статей</p></div>
+          <button class="btn btn-secondary" data-action="new">+ Новая статья</button>
+        </div>
+        <div class="content">
+          <div class="card">
+            <table>
+              <thead>
+                <tr><th>ID</th><th>Название</th><th>Категория</th><th>URL</th><th>Действия</th></tr>
+              </thead>
+              <tbody>
+                ${state.articles.map(a => `
+                  <tr>
+                    <td class="id-cell">${a.id}</td>
+                    <td>
+                      <div class="title-cell">${a.title}</div>
+                      ${a.description ? `<div class="desc-cell">${a.description.substring(0, 80)}...</div>` : ''}
+                    </td>
+                    <td>${a.category ? `<span class="tag">${a.category}</span>` : '—'}</td>
+                    <td style="font-size:12px;color:#3b82f6">${a.slug || '/articles/' + a.id}</td>
+                    <td>
+                      <div class="actions">
+                        <button class="btn-edit" data-edit="${a.id}">Изменить</button>
+                        <button class="btn-delete" data-delete="${a.id}">Удалить</button>
+                      </div>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+    
+    function renderEditor() {
+      const a = state.editArticle || { id: '', title: '', metaTitle: '', description: '', keywords: '', category: '', slug: '', content: '' };
+      const isNew = !state.editArticle;
+      return `
+        <div class="top-bar">
+          <div><h2>${isNew ? 'Новая статья' : 'Редактирование'}</h2><p style="color:#6b7280;font-size:14px;margin-top:4px">${isNew ? 'Создайте новую статью' : 'ID: ' + a.id}</p></div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-secondary" data-view="articles">Отмена</button>
+            <button class="btn" id="saveBtn">Сохранить</button>
+          </div>
+        </div>
+        <div class="content">
+          <div class="form-card">
+            <h4>Основные поля</h4>
+            <div class="form-grid">
+              <div><label style="font-size:13px;color:#374151;margin-bottom:6px;display:block">ID ${isNew ? '*' : '(не меняется)'}</label><input type="text" id="f-id" value="${a.id}" ${isNew ? '' : 'disabled'} placeholder="101"></div>
+              <div><label style="font-size:13px;color:#374151;margin-bottom:6px;display:block">Slug</label><input type="text" id="f-slug" value="${a.slug}" placeholder="/articles/my-article"></div>
+              <div class="full"><label style="font-size:13px;color:#374151;margin-bottom:6px;display:block">Название *</label><input type="text" id="f-title" value="${a.title}" placeholder="Название статьи"></div>
+              <div class="full"><label style="font-size:13px;color:#374151;margin-bottom:6px;display:block">Meta Title</label><input type="text" id="f-metaTitle" value="${a.metaTitle}" placeholder="SEO заголовок"></div>
+              <div><label style="font-size:13px;color:#374151;margin-bottom:6px;display:block">Категория</label><input type="text" id="f-category" value="${a.category}" placeholder="therapy, surgery..."></div>
+              <div><label style="font-size:13px;color:#374151;margin-bottom:6px;display:block">Ключевые слова</label><input type="text" id="f-keywords" value="${a.keywords}" placeholder="ветеринария, терапия..."></div>
+              <div class="full"><label style="font-size:13px;color:#374151;margin-bottom:6px;display:block">Описание</label><input type="text" id="f-description" value="${a.description}" placeholder="Краткое описание"></div>
+            </div>
+          </div>
+          <div class="form-card editor">
+            <h4>Контент (HTML)</h4>
+            <div class="toolbar">
+              <button data-tag="strong">Жирный</button>
+              <button data-tag="em">Курсив</button>
+              <button data-tag="h1">H1</button>
+              <button data-tag="h2">H2</button>
+              <button data-tag="ul">Список</button>
+              <button data-tag="ol">Нум.</button>
+              <button data-tag="a">Ссылка</button>
+              <button data-tag="img">Изображение</button>
+            </div>
+            <textarea id="f-content" placeholder="HTML контент статьи...">${a.content}</textarea>
+          </div>
+        </div>
+      `;
+    }
+    
+    // ========== LISTENERS ==========
+    function attachLoginListeners() {
+      document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        await login(form.username.value, form.password.value);
+      });
+    }
+    
+    function attachNavListeners() {
+      document.querySelectorAll('.nav-item[data-view]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          state.view = el.dataset.view;
+          render();
+        });
+      });
+      document.querySelectorAll('[data-action="new"]').forEach(el => {
+        el.addEventListener('click', () => {
+          state.editArticle = null;
+          state.view = 'edit';
+          render();
+        });
+      });
+      document.querySelectorAll('[data-action="logout"]').forEach(el => {
+        el.addEventListener('click', () => logout());
+      });
+      document.querySelectorAll('[data-edit]').forEach(el => {
+        el.addEventListener('click', async () => {
+          const article = await loadArticle(el.dataset.edit);
+          if (article) {
+            state.editArticle = article;
+            state.view = 'edit';
+            render();
+          }
+        });
+      });
+      document.querySelectorAll('[data-delete]').forEach(el => {
+        el.addEventListener('click', () => deleteArticle(el.dataset.delete));
+      });
+    }
+    
+    function attachEditorListeners() {
+      document.getElementById('saveBtn').addEventListener('click', async () => {
+        const article = {
+          id: document.getElementById('f-id').value,
+          title: document.getElementById('f-title').value,
+          metaTitle: document.getElementById('f-metaTitle').value,
+          description: document.getElementById('f-description').value,
+          keywords: document.getElementById('f-keywords').value,
+          category: document.getElementById('f-category').value,
+          slug: document.getElementById('f-slug').value,
+          content: document.getElementById('f-content').value,
+        };
+        if (!article.id || !article.title) {
+          alert('ID и Название обязательны');
+          return;
+        }
+        await saveArticle(article);
+      });
+      
+      document.querySelectorAll('.toolbar button[data-tag]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tag = btn.dataset.tag;
+          const ta = document.getElementById('f-content');
+          const s = ta.selectionStart, e2 = ta.selectionEnd;
+          const sel = ta.value.substring(s, e2);
+          let open = '', close = '';
+          switch(tag) {
+            case 'strong': open = '<strong>'; close = '</strong>'; break;
+            case 'em': open = '<em>'; close = '</em>'; break;
+            case 'h1': open = '<h1>'; close = '</h1>'; break;
+            case 'h2': open = '<h2>'; close = '</h2>'; break;
+            case 'ul': open = '<ul>\n<li>'; close = '</li>\n</ul>'; break;
+            case 'ol': open = '<ol>\n<li>'; close = '</li>\n</ol>'; break;
+            case 'a': open = '<a href="">'; close = '</a>'; break;
+            case 'img': open = '<img src="" alt="" />'; close = ''; break;
+          }
+          ta.value = ta.value.substring(0, s) + open + sel + close + ta.value.substring(e2);
+          ta.focus();
+          const newPos = s + open.length + sel.length;
+          ta.setSelectionRange(newPos, newPos);
+        });
+      });
+    }
+    
+    // ========== INIT ==========
+    checkAuth();
+  </script>
+</body>
+</html>
