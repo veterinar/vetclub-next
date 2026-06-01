@@ -12,6 +12,11 @@ export default async function CatchAllPage({ params }: Props) {
   const { path } = await params;
   const fullPath = '/' + path.join('/');
 
+  // Don't intercept admin routes — let App Router handle them
+  if (fullPath.startsWith('/admin')) {
+    redirect('/admin');
+  }
+
   // Legacy article redirect: /content/view/:id/:catid/ → /articles/:slug/
   const articleMatch = fullPath.match(/^\/content\/view\/(\d+)\/\d+\/?$/);
   if (articleMatch) {
