@@ -2,19 +2,11 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  
-  // Protect admin routes
-  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
-    const adminToken = request.cookies.get('admin_token')?.value;
-    if (!adminToken || adminToken !== process.env.ADMIN_SECRET_TOKEN) {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
-    }
-  }
-  
+  // Protect admin API routes only (not the admin page itself)
+  // The admin UI handles auth client-side via cookie check
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/api/:path*'],
 };
