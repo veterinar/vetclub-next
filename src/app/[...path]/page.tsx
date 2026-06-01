@@ -12,8 +12,9 @@ export default async function CatchAllPage({ params }: Props) {
   const { path } = await params;
   const fullPath = '/' + path.join('/');
 
-  // Don't intercept admin routes — let App Router handle them
-  if (fullPath.startsWith('/admin')) {
+  // Admin sub-routes (login, articles) redirect to /admin
+  // /admin itself is handled by src/app/admin/page.tsx
+  if (fullPath !== '/admin' && fullPath.startsWith('/admin')) {
     redirect('/admin');
   }
 
