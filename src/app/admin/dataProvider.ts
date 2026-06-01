@@ -65,11 +65,11 @@ export const dataProvider: DataProvider = {
   // Create new article
   create: async (resource, params) => {
     const id = params.data.id || Date.now().toString();
-    const res = await httpClient(`${API_URL}/${resource}/${id}`, {
+    await httpClient(`${API_URL}/${resource}/${id}`, {
       method: 'POST',
       body: JSON.stringify(params.data),
     });
-    return { data: { ...params.data, id } };
+    return { data: { ...params.data, id } as any };
   },
 
   // Update article
