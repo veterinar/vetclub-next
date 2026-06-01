@@ -1,6 +1,6 @@
 /**
  * Admin Login API
- * Validates login + password, sets auth cookie
+ * Validates login + password, sets auth cookie, redirects
  */
 
 export const runtime = 'nodejs';
@@ -9,8 +9,22 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const { login, password } = await request.json();
+    // Try form data first, then JSON
+    let login = '';
+    let password = '';
     
+    const contentType = request.headers.get('content-type') || '';
+    
+    if (contentType.includes('application/x-www-form-urlencoded')) {
+      const formData = await request.formData();
+      login = (formData.get('login') as string) || '';
+      password = (formData.get('password') as string) || '';
+    } else {
+      const json = await request.json();
+      login = json.login || '';
+      password = json.password || '';
+    }
+
     if (!login || !password) {
       return NextResponse.json(
         { error: 'Введите логин и пароль' },
@@ -24,7 +38,7 @@ export async function POST(request: Request) {
     if (login === adminLogin && password === adminPassword) {
       const token = process.env.ADMIN_SECRET_TOKEN || 'vetclub-admin-token';
       
-      const response = NextResponse.json({ success: true });
+      const response = NextResponse.redirect(new URL('/admin', request.url));
       response.cookies.set('admin_token', token, {
         httpOnly: true,
         secure: true,
@@ -36,14 +50,10 @@ export async function POST(request: Request) {
       return response;
     }
     
-    return NextResponse.json(
-      { error: 'Неверный логин или пароль' },
-      { status: 401 }
-    );
+    // Invalid credentials — redirect back with error
+    const response = NextResponse.redirect(new URL('/admin/login?error=invalid', request.url));
+    return response;
   } catch {
-    return NextResponse.json(
-      { error: 'Ошибка запроса' },
-      { status: 400 }
-    );
+    return NextResponse.redirect(new URL('/admin/login?error=error', request.url));
   }
 }

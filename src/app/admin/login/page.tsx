@@ -1,41 +1,19 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Eye, EyeOff, LogIn } from 'lucide-react';
 
 export default function AdminLogin() {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    try {
-      const res = await fetch('/api/admin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ login, password }),
-      });
-
-      if (res.ok) {
-        router.push('/admin');
-        router.refresh();
-      } else {
-        const data = await res.json();
-        setError(data.error || 'Неверный логин или пароль');
-      }
-    } catch {
-      setError('Ошибка авторизации');
-    }
-    setLoading(false);
-  }
+  useEffect(() => {
+    const err = searchParams.get('error');
+    if (err === 'invalid') setError('Неверный логин или пароль');
+    if (err === 'error') setError('Ошибка авторизации');
+  }, [searchParams]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -45,7 +23,8 @@ export default function AdminLogin() {
           <p className="text-sm text-gray-500 mt-1">Вход для администраторов</p>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Regular HTML form — browser handles cookie + redirect */}
+        <form action="/api/admin/login" method="POST" className="space-y-4">
           {/* Login field */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -53,8 +32,7 @@ export default function AdminLogin() {
             </label>
             <input
               type="text"
-              value={login}
-              onChange={(e) => setLogin(e.target.value)}
+              name="login"
               className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:border-transparent text-sm"
               placeholder="Введите логин"
               required
@@ -70,8 +48,7 @@ export default function AdminLogin() {
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
                 className="w-full px-4 py-2.5 pr-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:border-transparent text-sm"
                 placeholder="Введите пароль"
                 required
@@ -115,11 +92,10 @@ export default function AdminLogin() {
           {/* Submit button */}
           <button
             type="submit"
-            disabled={loading}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] disabled:opacity-50 font-medium transition-colors"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] font-medium transition-colors"
           >
             <LogIn size={18} />
-            {loading ? 'Вход...' : 'Войти'}
+            Войти
           </button>
         </form>
       </div>
