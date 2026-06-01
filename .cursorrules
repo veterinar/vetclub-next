@@ -42,10 +42,31 @@
 - Always set `export const runtime = 'nodejs'` for routes that need filesystem/DB access.
 - Use Supabase RPC or direct table queries via Server Components where possible.
 
-### Files & Structure
-- Follow App Router structure: `app/page.tsx`, `app/layout.tsx`, `app/loading.tsx`, `app/error.tsx`.
-- Keep components in `src/components/` or co-located in `app/` segments.
-- Utilities go in `src/lib/`.
+### Architecture (Module-Based)
+Follow the modular simple architecture pattern. One-directional data flow:
+`pages → modules → components → ui-kit`
+
+**Folder structure:**
+- `src/app/` — Thin pages (Server Components), routing only
+- `src/modules/` — Business modules with PUBLIC API via `index.ts`
+  - `src/modules/search/` — Search module (MiniSearch, hooks, utils)
+  - `src/modules/articles/` — Articles module (data fetching)
+  - `src/modules/admin/` — Admin module (auth hooks, article management)
+- `src/components/layout/` — Layout components (Header, Sidebar, Footer, AppLayout)
+- `src/components/search/` — Search components (SearchBox)
+- `src/components/ui/` — UI-kit (buttons, inputs, cards — reusable primitives)
+- `src/api/` — API layer (client.ts, admin.ts, search.ts, articles.ts)
+- `src/types/` — Shared TypeScript types (article.ts, search.ts, admin.ts)
+- `src/constants/` — Global constants
+- `src/hooks/` — Global custom hooks
+- `src/lib/` — Utilities (cn, formatters, etc.)
+
+**Rules:**
+- Every module MUST expose PUBLIC API via `index.ts` (encapsulation)
+- Use kebab-case for all file names
+- Keep pages thin — extract logic into modules
+- Use the API layer for all HTTP requests — no raw fetch in components
+- Import types from `@/types`, API from `@/api`, modules from `@/modules/*`
 
 ### Performance
 - Use `React.lazy()` + `Suspense` for code splitting heavy components.

@@ -2,7 +2,7 @@ import articlesData from '@/data/index.json';
 import categoriesData from '@/data/categories.json';
 import slugMapData from '@/data/slug-map.json';
 import Link from 'next/link';
-import SearchBox from './SearchBox';
+import { SearchBox } from '@/components/features';
 import { Metadata } from 'next';
 
 const { idMap } = slugMapData as { idMap: Record<string, string> };
