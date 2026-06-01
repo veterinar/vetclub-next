@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AppLayout } from "@/components/layout";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: "VetClub.ru — Ветеринария для профессионалов",
-  description: "Справочная информация для ветврача.",
+  description: "Справочная информация для ветврача. Статьи по ветеринарной терапии, хирургии, дерматологии, офтальмологии, диагностике.",
+  keywords: "ветеринария, ветврач, ветеринарные статьи",
 };
 
 export default function RootLayout({
@@ -17,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
-        {children}
+        <AppLayout>{children}</AppLayout>
       </body>
     </html>
   );
