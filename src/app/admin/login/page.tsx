@@ -1,19 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Eye, EyeOff, LogIn } from 'lucide-react';
 
-export default function AdminLogin() {
+function LoginForm() {
   const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    const err = searchParams.get('error');
-    if (err === 'invalid') setError('Неверный логин или пароль');
-    if (err === 'error') setError('Ошибка авторизации');
-  }, [searchParams]);
+  // Check for error in URL
+  const errParam = searchParams.get('error');
+  const displayError = error || (errParam === 'invalid' ? 'Неверный логин или пароль' : errParam === 'error' ? 'Ошибка авторизации' : '');
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -23,13 +21,9 @@ export default function AdminLogin() {
           <p className="text-sm text-gray-500 mt-1">Вход для администраторов</p>
         </div>
         
-        {/* Regular HTML form — browser handles cookie + redirect */}
         <form action="/api/admin/login" method="POST" className="space-y-4">
-          {/* Login field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Логин
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Логин</label>
             <input
               type="text"
               name="login"
@@ -40,11 +34,8 @@ export default function AdminLogin() {
             />
           </div>
 
-          {/* Password field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Пароль
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -65,7 +56,6 @@ export default function AdminLogin() {
             </div>
           </div>
 
-          {/* Show password checkbox */}
           <div className="flex items-center">
             <input
               type="checkbox"
@@ -74,22 +64,17 @@ export default function AdminLogin() {
               onChange={(e) => setShowPassword(e.target.checked)}
               className="h-4 w-4 text-[#2e7d32] border-gray-300 rounded focus:ring-[#4caf50]"
             />
-            <label
-              htmlFor="show-password"
-              className="ml-2 text-sm text-gray-600 cursor-pointer select-none"
-            >
+            <label htmlFor="show-password" className="ml-2 text-sm text-gray-600 cursor-pointer select-none">
               Показать пароль
             </label>
           </div>
           
-          {/* Error message */}
-          {error && (
+          {displayError && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm text-red-600">{error}</p>
+              <p className="text-sm text-red-600">{displayError}</p>
             </div>
           )}
           
-          {/* Submit button */}
           <button
             type="submit"
             className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] font-medium transition-colors"
@@ -100,5 +85,17 @@ export default function AdminLogin() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function AdminLogin() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="w-8 h-8 border-2 border-gray-300 border-t-[#2e7d32] rounded-full animate-spin" />
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
   );
 }
