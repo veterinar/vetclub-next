@@ -3,29 +3,25 @@
  * Use in Server Components to protect admin pages
  */
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 export async function requireAuth() {
+  // Try cookies() first
   const cookieStore = await cookies();
-  const adminToken = cookieStore.get('admin_token')?.value;
+  let adminToken = cookieStore.get('admin_token')?.value;
+  
+  // Fallback: parse from header
+  if (!adminToken) {
+    const hdrs = await headers();
+    const cookieHeader = hdrs.get('cookie') || '';
+    const match = cookieHeader.match(/admin_token=([^;]+)/);
+    if (match) adminToken = decodeURIComponent(match[1]);
+  }
+  
   const expectedToken = process.env.ADMIN_SECRET_TOKEN || 'vetclub-admin-token';
 
   if (!adminToken || adminToken !== expectedToken) {
     redirect('/admin/login');
   }
-}
-
-// Debug helper
-export async function getAuthDebug() {
-  const cookieStore = await cookies();
-  const adminToken = cookieStore.get('admin_token')?.value;
-  const expectedToken = process.env.ADMIN_SECRET_TOKEN || 'vetclub-admin-token';
-  
-  return {
-    hasCookie: !!adminToken,
-    cookieValue: adminToken ? `${adminToken.slice(0, 8)}...` : null,
-    expectedValue: `${expectedToken.slice(0, 8)}...`,
-    match: adminToken === expectedToken,
-  };
 }
