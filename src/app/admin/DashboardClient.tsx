@@ -19,11 +19,11 @@ export default function DashboardClient() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/admin/debug', { cache: 'no-store' })
+    fetch('/api/admin/debug', { cache: 'no-store', credentials: 'include' })
       .then(r => r.json())
       .then(data => {
         if (!data.cookieMatch) { router.push('/admin/login'); return; }
-        return fetch('/api/admin/articles');
+        return fetch('/api/admin/articles', { credentials: 'include' });
       })
       .then(r => r?.json())
       .then(data => { setArticles(data?.articles || []); setLoading(false); })

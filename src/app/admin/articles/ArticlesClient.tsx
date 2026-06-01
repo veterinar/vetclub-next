@@ -27,14 +27,14 @@ export default function ArticlesPage() {
 
   useEffect(() => {
     // Check auth + load articles
-    fetch('/api/admin/debug', { cache: 'no-store' })
+    fetch('/api/admin/debug', { cache: 'no-store', credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         if (!data.cookieMatch) {
           router.push('/admin/login');
           return;
         }
-        return fetch('/api/admin/articles');
+        return fetch('/api/admin/articles', { credentials: 'include' });
       })
       .then(res => res?.json())
       .then(data => {

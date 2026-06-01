@@ -35,7 +35,7 @@ export default function EditArticlePage({
       setIsNew(newArticle);
 
       // Check auth
-      fetch('/api/admin/debug', { cache: 'no-store' })
+      fetch('/api/admin/debug', { cache: 'no-store', credentials: 'include' })
         .then(res => res.json())
         .then(data => {
           if (!data.cookieMatch) {
@@ -57,7 +57,7 @@ export default function EditArticlePage({
             return;
           }
           // Load existing article
-          return fetch(`/api/admin/articles/${resolvedId}`);
+          return fetch(`/api/admin/articles/${resolvedId}`, { credentials: 'include' });
         })
         .then(res => {
           if (!res) return;

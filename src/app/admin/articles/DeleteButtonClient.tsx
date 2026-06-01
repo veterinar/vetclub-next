@@ -18,6 +18,7 @@ export default function DeleteButtonClient({
     try {
       const res = await fetch(`/api/admin/articles/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
 
       if (res.ok) {
