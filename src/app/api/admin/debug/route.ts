@@ -1,7 +1,3 @@
-/**
- * Debug auth endpoint — checks cookie status
- */
-
 export const runtime = 'nodejs';
 
 import { NextResponse } from 'next/server';
@@ -15,12 +11,5 @@ export async function GET() {
   return NextResponse.json({
     hasCookie: !!adminToken,
     cookieMatch: adminToken === expectedToken,
-    cookiePrefix: adminToken ? adminToken.slice(0, 10) : null,
-    expectedPrefix: expectedToken.slice(0, 10),
-    env: {
-      hasSecretToken: !!process.env.ADMIN_SECRET_TOKEN,
-      hasPassword: !!process.env.ADMIN_PASSWORD,
-      nodeEnv: process.env.NODE_ENV,
-    },
   });
 }

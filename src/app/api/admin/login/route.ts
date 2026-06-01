@@ -1,8 +1,3 @@
-/**
- * Admin Login API
- * Validates login + password, sets auth cookie, returns JSON
- */
-
 export const runtime = 'nodejs';
 
 import { NextResponse } from 'next/server';
