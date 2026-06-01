@@ -14,8 +14,7 @@ function LoadingScreen() {
     }}>
       <div style={{ textAlign: 'center' }}>
         <div style={{
-          width: 48,
-          height: 48,
+          width: 48, height: 48,
           border: '4px solid #e0e0e0',
           borderTopColor: '#2e7d32',
           borderRadius: '50%',
@@ -29,28 +28,47 @@ function LoadingScreen() {
   );
 }
 
+function ErrorScreen({ error }: { error: string }) {
+  return (
+    <div style={{
+      height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: '#fff5f5', fontFamily: 'system-ui, sans-serif',
+    }}>
+      <div style={{ textAlign: 'center', maxWidth: 400, padding: 20 }}>
+        <p style={{ color: '#c00', fontSize: 16, fontWeight: 600, marginBottom: 8 }}>Ошибка загрузки</p>
+        <p style={{ color: '#666', fontSize: 13 }}>{error}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminApp() {
   const [ready, setReady] = useState(false);
-  const [AdminComponent, setAdminComponent] = useState<React.ComponentType | null>(null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    // Only load React Admin on client side
     if (typeof window === 'undefined') return;
 
-    let mounted = true;
-
     async function loadAdmin() {
-      const [{ Admin, Resource }, auth, data, articles] = await Promise.all([
-        import('react-admin'),
-        import('./authProvider'),
-        import('./dataProvider'),
-        import('./resources/articles'),
-      ]);
+      try {
+        const [{ Admin, Resource }, auth, data, articles] = await Promise.all([
+          import('react-admin'),
+          import('./authProvider'),
+          import('./dataProvider'),
+          import('./resources/articles'),
+        ]);
 
-      if (!mounted) return;
+        const container = document.getElementById('admin-root');
+        if (!container) return;
 
-      function AdminAppInner() {
-        return (
+        const root = (window as any).__adminRoot;
+        if (root) return;
+
+        const { createRoot } = await import('react-dom/client');
+        const adminRoot = createRoot(container);
+        (window as any).__adminRoot = adminRoot;
+
+        adminRoot.render(
           <Admin
             authProvider={auth.authProvider}
             dataProvider={data.dataProvider}
@@ -74,20 +92,22 @@ export default function AdminApp() {
             />
           </Admin>
         );
-      }
 
-      setAdminComponent(() => AdminAppInner);
-      setReady(true);
+        setReady(true);
+      } catch (err: any) {
+        console.error('Admin load error:', err);
+        setError(err?.message || 'Не удалось загрузить админ-панель');
+      }
     }
 
     loadAdmin();
-
-    return () => { mounted = false; };
   }, []);
 
-  if (!ready || !AdminComponent) {
-    return <LoadingScreen />;
-  }
+  if (error) return <ErrorScreen error={error} />;
 
-  return <AdminComponent />;
+  return (
+    <div id="admin-root" style={{ height: '100vh' }}>
+      {!ready && <LoadingScreen />}
+    </div>
+  );
 }
