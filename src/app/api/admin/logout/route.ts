@@ -5,11 +5,13 @@
 import { NextResponse } from 'next/server';
 
 export async function POST() {
-  const response = NextResponse.redirect(new URL('/admin/login', process.env.VERCEL_URL || 'http://localhost:3000'));
+  const response = NextResponse.redirect(
+    new URL('/admin/login', process.env.VERCEL_URL || 'http://localhost:3000')
+  );
   response.cookies.set('admin_token', '', {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    secure: true,
+    sameSite: 'lax',
     maxAge: 0,
     path: '/',
   });

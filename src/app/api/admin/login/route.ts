@@ -11,7 +11,6 @@ export async function POST(request: Request) {
   try {
     const { login, password } = await request.json();
     
-    // Validate input
     if (!login || !password) {
       return NextResponse.json(
         { error: 'Введите логин и пароль' },
@@ -19,7 +18,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check credentials against env variables
     const adminLogin = process.env.ADMIN_LOGIN || 'admin';
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
     
@@ -29,9 +27,9 @@ export async function POST(request: Request) {
       const response = NextResponse.json({ success: true });
       response.cookies.set('admin_token', token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        maxAge: 60 * 60 * 24, // 24 hours
+        secure: true,
+        sameSite: 'lax',
+        maxAge: 60 * 60 * 24,
         path: '/',
       });
       

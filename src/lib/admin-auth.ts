@@ -9,8 +9,9 @@ import { redirect } from 'next/navigation';
 export async function requireAuth() {
   const cookieStore = await cookies();
   const adminToken = cookieStore.get('admin_token')?.value;
+  const expectedToken = process.env.ADMIN_SECRET_TOKEN || 'vetclub-admin-token';
 
-  if (!adminToken) {
+  if (!adminToken || adminToken !== expectedToken) {
     redirect('/admin/login');
   }
 }
